@@ -45,7 +45,7 @@ class ideasPackage
             'resolvers' => $root . '_build/resolvers/',
 
             'assets' => $assets,
-            'core' => $core,
+            'mdxcr' => $core,
         ], $config);
         $this->modx->setLogLevel($this->config['log_level']);
         $this->modx->setLogTarget($this->config['log_target']);
@@ -82,13 +82,13 @@ class ideasPackage
      */
     protected function model()
     {
-        if (empty($this->config['core'] . 'model/schema/' . $this->config['name_lower'] . '.mysql.schema.xml')) {
+        if (empty($this->config['mdxcr'] . 'model/schema/' . $this->config['name_lower'] . '.mysql.schema.xml')) {
             return;
         }
         /** @var xPDOCacheManager $cache */
         if ($cache = $this->modx->getCacheManager()) {
             $cache->deleteTree(
-                $this->config['core'] . 'model/' . $this->config['name_lower'] . '/mysql',
+                $this->config['mdxcr'] . 'model/' . $this->config['name_lower'] . '/mysql',
                 ['deleteTop' => true, 'skipDirs' => false, 'extensions' => []]
             );
         }
@@ -98,8 +98,8 @@ class ideasPackage
         /** @var xPDOGenerator $generator */
         $generator = $manager->getGenerator();
         $generator->parseSchema(
-            $this->config['core'] . 'model/schema/' . $this->config['name_lower'] . '.mysql.schema.xml',
-            $this->config['core'] . 'model/'
+            $this->config['mdxcr'] . 'model/schema/' . $this->config['name_lower'] . '.mysql.schema.xml',
+            $this->config['mdxcr'] . 'model/'
         );
         $this->modx->log(modX::LOG_LEVEL_INFO, 'Model updated');
     }
@@ -229,8 +229,8 @@ class ideasPackage
             $widget = $this->modx->newObject('modDashboardWidget');
             $widget->fromArray(array_merge([
                 'name' => $name,
-                'namespace' => 'core',
-                'lexicon' => 'core:dashboards',
+                'namespace' => 'mdxcr',
+                'lexicon' => 'mdxcr:dashboards',
             ], $data), '', true, true);
             $vehicle = $this->builder->createVehicle($widget, $attributes);
             $this->builder->putVehicle($vehicle);
@@ -316,10 +316,10 @@ class ideasPackage
                 'name' => $name,
                 'category' => 0,
                 'description' => @$data['description'],
-                'plugincode' => $this::_getContent($this->config['core'] . 'elements/plugins/' . $data['file'] . '.php'),
+                'plugincode' => $this::_getContent($this->config['mdxcr'] . 'elements/plugins/' . $data['file'] . '.php'),
                 'static' => !empty($this->config['static']['plugins']),
                 'source' => 1,
-                'static_file' => 'core/components/' . $this->config['name_lower'] . '/elements/plugins/' . $data['file'] . '.php',
+                'static_file' => 'mdxcr/components/' . $this->config['name_lower'] . '/elements/plugins/' . $data['file'] . '.php',
             ], $data), '', true, true);
 
             $events = [];
@@ -370,10 +370,10 @@ class ideasPackage
                 'id' => 0,
                 'name' => $name,
                 'description' => @$data['description'],
-                'snippet' => $this::_getContent($this->config['core'] . 'elements/snippets/' . $data['file'] . '.php'),
+                'snippet' => $this::_getContent($this->config['mdxcr'] . 'elements/snippets/' . $data['file'] . '.php'),
                 'static' => !empty($this->config['static']['snippets']),
                 'source' => 1,
-                'static_file' => 'core/components/' . $this->config['name_lower'] . '/elements/snippets/' . $data['file'] . '.php',
+                'static_file' => 'mdxcr/components/' . $this->config['name_lower'] . '/elements/snippets/' . $data['file'] . '.php',
             ], $data), '', true, true);
             $properties = [];
             foreach (@$data['properties'] as $k => $v) {
@@ -415,10 +415,10 @@ class ideasPackage
                 'id' => 0,
                 'name' => $name,
                 'description' => @$data['description'],
-                'snippet' => $this::_getContent($this->config['core'] . 'elements/chunks/' . $data['file'] . '.tpl'),
+                'snippet' => $this::_getContent($this->config['mdxcr'] . 'elements/chunks/' . $data['file'] . '.tpl'),
                 'static' => !empty($this->config['static']['chunks']),
                 'source' => 1,
-                'static_file' => 'core/components/' . $this->config['name_lower'] . '/elements/chunks/' . $data['file'] . '.tpl',
+                'static_file' => 'mdxcr/components/' . $this->config['name_lower'] . '/elements/chunks/' . $data['file'] . '.tpl',
             ], $data), '', true, true);
             $objects[$name]->setProperties(@$data['properties']);
         }
@@ -452,10 +452,10 @@ class ideasPackage
             $objects[$name]->fromArray(array_merge([
                 'templatename' => $name,
                 'description' => $data['description'],
-                'content' => $this::_getContent($this->config['core'] . 'elements/templates/' . $data['file'] . '.tpl'),
+                'content' => $this::_getContent($this->config['mdxcr'] . 'elements/templates/' . $data['file'] . '.tpl'),
                 'static' => !empty($this->config['static']['templates']),
                 'source' => 1,
-                'static_file' => 'core/components/' . $this->config['name_lower'] . '/elements/templates/' . $data['file'] . '.tpl',
+                'static_file' => 'mdxcr/components/' . $this->config['name_lower'] . '/elements/templates/' . $data['file'] . '.tpl',
             ], $data), '', true, true);
         }
         $this->category->addMany($objects);
@@ -506,7 +506,7 @@ class ideasPackage
             'uri_override' => false,
             'richtext' => false,
             'searchable' => true,
-            'content' => $this::_getContent($this->config['core'] . 'elements/resources/' . $file . '.tpl'),
+            'content' => $this::_getContent($this->config['mdxcr'] . 'elements/resources/' . $file . '.tpl'),
         ], $data), '', true, true);
 
         if (!empty($data['groups'])) {
@@ -604,7 +604,7 @@ class ideasPackage
 
         // Files resolvers
         $vehicle->resolve('file', [
-            'source' => $this->config['core'],
+            'source' => $this->config['mdxcr'],
             'target' => "return MODX_CORE_PATH . 'components/';",
         ]);
         $vehicle->resolve('file', [
@@ -619,8 +619,8 @@ class ideasPackage
             if ($cache = $this->modx->getCacheManager()) {
                 $dirs = [
                     $this->config['assets'] . 'js/office',
-                    $this->config['core'] . 'controllers/office',
-                    $this->config['core'] . 'processors/office',
+                    $this->config['mdxcr'] . 'controllers/office',
+                    $this->config['mdxcr'] . 'processors/office',
                 ];
                 foreach ($dirs as $dir) {
                     $cache->deleteTree($dir, ['deleteTop' => true, 'skipDirs' => false, 'extensions' => []]);
@@ -639,9 +639,9 @@ class ideasPackage
         $this->builder->putVehicle($vehicle);
 
         $this->builder->setPackageAttributes([
-            'changelog' => file_get_contents($this->config['core'] . 'docs/changelog.txt'),
-            'license' => file_get_contents($this->config['core'] . 'docs/license.txt'),
-            'readme' => file_get_contents($this->config['core'] . 'docs/readme.txt'),
+            'changelog' => file_get_contents($this->config['mdxcr'] . 'docs/changelog.txt'),
+            'license' => file_get_contents($this->config['mdxcr'] . 'docs/license.txt'),
+            'readme' => file_get_contents($this->config['mdxcr'] . 'docs/readme.txt'),
         ]);
         $this->modx->log(modX::LOG_LEVEL_INFO, 'Added package attributes and setup options.');
 
