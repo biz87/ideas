@@ -15,6 +15,7 @@ if($allow_jquery_modal){
 }
 
 $pdoFetch = $modx->getService('pdoFetch');
+$pdo = $modx>getService('pdoTools');
 
 $ideasPosts = $pdoFetch->getCollection(
     'ideasPosts',
@@ -42,3 +43,12 @@ $ideasPosts = $pdoFetch->getCollection(
 );
 
 
+$tabs = [];
+foreach($ideasPosts as $ideasPost){
+    $tabs[$ideasPost['type_id']]['tab_name'][] = $ideasPost['type_name'];
+    $tabs[$ideasPost['type_id']]['posts'] = $ideasPost;
+}
+
+
+
+return $pdo->getChunk('tpl.ideas.tpl', $tabs);

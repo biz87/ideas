@@ -1,12 +1,8 @@
 <?php
 
 return [
-    'tpl.ideas.item' => [
-        'file' => 'item',
-        'description' => '',
-    ],
-    'tpl.ideas.office' => [
-        'file' => 'office',
+    'tpl.ideas.tpl' => [
+        'file' => 'tpl',
         'description' => '',
     ],
 ];
