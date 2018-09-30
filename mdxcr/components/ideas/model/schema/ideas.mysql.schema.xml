@@ -2,7 +2,7 @@
 <model package="ideas" baseClass="xPDOObject" platform="mysql" defaultEngine="InnoDB" phpdoc-package="ideas"
        version="1.1">
 
-    <object class="ideas" table="ideas_posts" extends="xPDOSimpleObject">
+    <object class="ideas_posts" table="ideas_posts" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
         <field key="description" dbtype="text" phptype="string" null="true" default=""/>
         <field key="status" dbtype="tinyint" precision="3"  attributes="unsigned" phptype="integer" null="true"
