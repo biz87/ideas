@@ -8,8 +8,13 @@ if (!$ideas) {
     return '';
 }
 
-$modx->regClientCSS(MODX_ASSETS_PATH . 'components/ideas/css/jquery.modal.min.css');
-$modx->regClientScript(MODX_ASSETS_PATH . 'components/ideas/js/jquery.modal.min.js');
+$allow_jquery_modal = $modx->getOption('allow_jquery-modal', null, true);
+if($allow_jquery_modal){
+    $modx->regClientCSS(MODX_ASSETS_URL . 'components/ideas/css/jquery.modal.min.css');
+    $modx->regClientScript(MODX_ASSETS_URL. 'components/ideas/js/jquery.modal.min.js');
+}
+
+
 
 //
 //// Do your snippet code here. This demo grabs 5 items from our custom table.

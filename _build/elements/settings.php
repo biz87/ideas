@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'some_setting' => [
+    'allow_jquery_modal' => [
         'xtype' => 'combo-boolean',
         'value' => true,
         'area' => 'ideas_main',
