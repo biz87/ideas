@@ -9,6 +9,7 @@
 /** @var xPDOTransport $transport */
 /** @var array $options */
 /** @var modX $modx */
+$this->modx->log(modX::LOG_LEVEL_INFO, 'hello resolver settings');
 if ($transport->xpdo) {
     $modx =& $transport->xpdo;
     switch ($options[xPDOTransport::PACKAGE_ACTION]) {
