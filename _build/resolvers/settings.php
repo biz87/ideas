@@ -12,7 +12,6 @@
 
 if ($transport->xpdo) {
     $modx =& $transport->xpdo;
-    $modx->log(modX::LOG_LEVEL_INFO, 'hello resolver setting');
     switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         case xPDOTransport::ACTION_INSTALL:
         case xPDOTransport::ACTION_UPGRADE:
@@ -51,27 +50,33 @@ if ($transport->xpdo) {
                     $status->save();
                 }
             }
-//            /** @var msDelivery $delivery */
-//            if (!$delivery = $modx->getObject('msDelivery', 1)) {
-//                $delivery = $modx->newObject('msDelivery');
-//                $delivery->fromArray(array(
-//                    'id' => 1,
-//                    'name' => !$lang ? 'Самовывоз' : 'Self-delivery',
-//                    'price' => 0,
-//                    'weight_price' => 0,
-//                    'distance_price' => 0,
-//                    'active' => 1,
-//                    'requires' => 'email,receiver',
-//                    'rank' => 0,
-//                ), '', true);
-//                $delivery->save();
-//            }
 
+            $types = array(
+                1 => array(
+                    'name' => 'Идеи',
+                ),
+                2 => array(
+                    'name' => 'Вопросы',
+                ),
+                3 => array(
+                    'name' => 'Проблемы',
+                ),
+            );
+            foreach ($types as $id => $type) {
+                if (!$type = $modx->getCount('ideasTypes', array('id' => $id))) {
+                    $type = $modx->newObject('ideasTypes', array_merge(array(
+                        'active' => 1,
+                        'rank' => $id - 1,
+                    ), $properties));
+                    $type->set('id', $id);
+                    $type->save();
+                }
+            }
 
             break;
         case xPDOTransport::ACTION_UNINSTALL:
             $modx->removeCollection('modSystemSetting', array(
-                'namespace' => 'minishop2',
+                'namespace' => 'ideas',
             ));
             break;
     }
