@@ -47,7 +47,7 @@
             <column key="active" length="" collation="A" null="false"/>
         </index>
 
-        <aggregate alias="Ideas" class="ideas" local="id" foreign="status" cardinality="many" owner="local"/>
+        <aggregate alias="Ideas" class="ideas_posts" local="id" foreign="status" cardinality="many" owner="local"/>
     </object>
 
 
@@ -63,7 +63,7 @@
             <column key="active" length="" collation="A" null="false"/>
         </index>
 
-        <aggregate alias="Types" class="ideas" local="id" foreign="type" cardinality="many" owner="local"/>
+        <aggregate alias="Types" class="ideas_posts" local="id" foreign="type" cardinality="many" owner="local"/>
     </object>
 
 </model>
