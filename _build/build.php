@@ -614,7 +614,6 @@ class ideasPackage
 
         // Add resolvers into vehicle
         $resolvers = scandir($this->config['resolvers']);
-        print_r($resolvers);
 
         foreach ($resolvers as $resolver) {
             if (in_array($resolver[0], ['_', '.'])) {

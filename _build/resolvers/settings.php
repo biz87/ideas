@@ -16,9 +16,11 @@ if ($transport->xpdo) {
     switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         case xPDOTransport::ACTION_INSTALL:
         case xPDOTransport::ACTION_UPGRADE:
-//            $modelPath = $modx->getOption('core_path') . 'components/ideas/' . 'model/';
-//
-//            $modx->addPackage('minishop2', $modelPath);
+
+            $ideas = $modx->getService('ideas', 'ideas', MODX_CORE_PATH . 'components/ideas/model/');
+            if (!$ideas) {
+                return 'Could not load ideas class!';
+            }
             $statuses = array(
                 1 => array(
                     'name' => 'На рассмотрении',
