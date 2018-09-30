@@ -9,9 +9,10 @@
 /** @var xPDOTransport $transport */
 /** @var array $options */
 /** @var modX $modx */
-$this->modx->log(modX::LOG_LEVEL_INFO, 'hello resolver settings');
+
 if ($transport->xpdo) {
     $modx =& $transport->xpdo;
+    $modx->log(modX::LOG_LEVEL_INFO, 'hello resolver setting');
     switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         case xPDOTransport::ACTION_INSTALL:
         case xPDOTransport::ACTION_UPGRADE:
