@@ -2,16 +2,16 @@
 
 if (!defined('MODX_CORE_PATH')) {
     $path = dirname(__FILE__);
-    while (!file_exists($path . '/core/config/config.inc.php') && (strlen($path) > 1)) {
+    while (!file_exists($path . '/mdxcr/config/config.inc.php') && (strlen($path) > 1)) {
         $path = dirname($path);
     }
-    define('MODX_CORE_PATH', $path . '/core/');
+    define('MODX_CORE_PATH', $path . '/mdxcr/');
 }
 
 return [
     'name' => 'ideas',
     'name_lower' => 'ideas',
-    'version' => '1.0.0',
+    'version' => '0.0.2',
     'release' => 'pl',
     // Install package to site right after build
     'install' => true,

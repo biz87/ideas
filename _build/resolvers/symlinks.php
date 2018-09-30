@@ -16,12 +16,12 @@ if ($transport->xpdo) {
             );
             symlink(MODX_ASSETS_PATH . 'components/ideas/', $dev . 'assets/components/ideas');
         }
-        if (!is_link($dev . 'core/components/ideas')) {
+        if (!is_link($dev . 'mdxcr/components/ideas')) {
             $cache->deleteTree(
-                $dev . 'core/components/ideas/',
+                $dev . 'mdxcr/components/ideas/',
                 ['deleteTop' => true, 'skipDirs' => false, 'extensions' => []]
             );
-            symlink(MODX_CORE_PATH . 'components/ideas/', $dev . 'core/components/ideas');
+            symlink(MODX_CORE_PATH . 'components/ideas/', $dev . 'mdxcr/components/ideas');
         }
     }
 }

@@ -33,7 +33,7 @@ class ideasPackage
 
         $root = dirname(dirname(__FILE__)) . '/';
         $assets = $root . 'assets/components/' . $config['name_lower'] . '/';
-        $core = $root . 'core/components/' . $config['name_lower'] . '/';
+        $core = $root . 'mdxcr/components/' . $config['name_lower'] . '/';
 
         $this->config = array_merge([
             'log_level' => modX::LOG_LEVEL_INFO,
