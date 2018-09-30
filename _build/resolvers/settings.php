@@ -63,8 +63,8 @@ if ($transport->xpdo) {
                 ),
             );
             foreach ($types as $id => $type) {
-                if (!$type = $modx->getCount('ideasTypes', array('id' => $id))) {
-                    $type = $modx->newObject('ideasTypes', array_merge(array(
+                if (!$type = $modx->getCount('ideasType', array('id' => $id))) {
+                    $type = $modx->newObject('ideasType', array_merge(array(
                         'active' => 1,
                         'rank' => $id - 1,
                     ), $properties));

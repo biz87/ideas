@@ -15,7 +15,7 @@ if($allow_jquery_modal){
 }
 
 $pdoFetch = $modx->getService('pdoFetch');
-$pdo = $modx>getService('pdoTools');
+$pdo = $modx->getService('pdoTools');
 
 $ideasPosts = $pdoFetch->getCollection(
     'ideasPosts',
@@ -36,7 +36,7 @@ $ideasPosts = $pdoFetch->getCollection(
         'select' => array(
             'ideasPosts' => 'name, description',
             'Status' => 'Status.name as status_name',
-            'Type' => 'Type.name as type_name'
+            'Type' => 'Type.name as type_name, Type.id as type_id'
         ),
         'limit' => 20
     )
@@ -51,4 +51,4 @@ foreach($ideasPosts as $ideasPost){
 
 
 
-return $pdo->getChunk('tpl.ideas.tpl', $tabs);
+return $pdo->getChunk('tpl.ideas.tpl', array('tabs' => $tabs));
