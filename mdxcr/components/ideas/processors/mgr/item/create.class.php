@@ -2,8 +2,8 @@
 
 class ideasItemCreateProcessor extends modObjectCreateProcessor
 {
-    public $objectType = 'ideasItem';
-    public $classKey = 'ideasItem';
+    public $objectType = 'ideasPost';
+    public $classKey = 'ideasPost';
     public $languageTopics = ['ideas'];
     //public $permission = 'create';
 

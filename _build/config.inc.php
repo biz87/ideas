@@ -11,7 +11,7 @@ if (!defined('MODX_CORE_PATH')) {
 return [
     'name' => 'ideas',
     'name_lower' => 'ideas',
-    'version' => '0.1.3',
+    'version' => '0.1.4',
     'release' => 'pl',
     // Install package to site right after build
     'install' => true,
