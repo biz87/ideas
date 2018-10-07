@@ -35,3 +35,5 @@ $_lang['ideas_item_err_save'] = 'Ошибка при сохранении пос
 
 $_lang['ideas_grid_search'] = 'Поиск';
 $_lang['ideas_grid_actions'] = 'Действия';
+
+$_lang['ideas_items_user_anonimus'] = 'Аноним';

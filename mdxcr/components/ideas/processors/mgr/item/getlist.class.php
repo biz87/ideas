@@ -52,6 +52,23 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
     public function prepareRow(xPDOObject $object)
     {
         $array = $object->toArray();
+
+
+        if(isset($array['user_id']) && $array['user_id'] > 0){
+            $userProfile = $this->modx->getObject('modUserProfile', array('internalKey' => $array['user_id']));
+            if($userProfile){
+                if($fullname = $userProfile->get('fullname')){
+                    $array['user'] = $fullname;
+                }else{
+                    $array['user'] = $userProfile->get('username');
+                }
+            }else{
+                $array['user'] = '';
+            }
+        }else{
+            $array['user'] = $this->modx->lexicon('ideas_items_user_anonimus');
+        }
+
         $this->modx->log(1, print_r($array, true));
         $array['actions'] = [];
 
