@@ -39,3 +39,18 @@
     color:#fff;
     text-decoration:none;
 }
+
+.ideasTabs{
+
+}
+
+.ideasTabs .ideasTab{
+    display:none;
+}
+
+.ideasTabs .ideasTab.active{
+    display:block;
+    border:1px solid #ddd;
+    padding:20px;
+
+}
