@@ -10,7 +10,7 @@ ideas.grid.Statuses = function (config) {
         tbar: this.getTopBar(config),
         sm: new Ext.grid.CheckboxSelectionModel(),
         baseParams: {
-            action: 'mgr/statuses/getlist'
+            action: 'mgr/status/getlist'
         },
         listeners: {
             rowDblClick: function (grid, rowIndex, e) {

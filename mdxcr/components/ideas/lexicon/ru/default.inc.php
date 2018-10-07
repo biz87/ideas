@@ -3,7 +3,7 @@ include_once 'setting.inc.php';
 
 $_lang['ideas'] = 'Ideas';
 $_lang['ideas_menu_desc'] = 'Идеи, вопросы, проблемы';
-$_lang['ideas_intro_msg'] = 'Вы можете выделять сразу несколько постов при помощи Shift или Ctrl.';
+$_lang['ideas_intro_msg'] = 'Управление постами <br> Вы можете выделять сразу несколько постов при помощи Shift или Ctrl.';
 
 $_lang['ideas_items'] = 'Посты';
 $_lang['ideas_item_id'] = 'Id';
@@ -39,6 +39,7 @@ $_lang['ideas_grid_actions'] = 'Действия';
 $_lang['ideas_items_user_anonimus'] = 'Аноним';
 
 
+$_lang['ideas_intro_msg'] = 'Управление статусами <br> Вы можете выделять сразу несколько статусов при помощи Shift или Ctrl.';
 $_lang['ideas_statuses'] = 'Статусы';
 $_lang['ideas_status_id'] = 'Id';
 $_lang['ideas_status_name'] = 'Название';
