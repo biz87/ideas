@@ -1,7 +1,7 @@
-ideas.grid.Items = function (config) {
+ideas.grid.Statuses = function (config) {
     config = config || {};
     if (!config.id) {
-        config.id = 'ideas-grid-items';
+        config.id = 'ideas-grid-statuses';
     }
     Ext.applyIf(config, {
         url: ideas.config.connector_url,
@@ -10,12 +10,12 @@ ideas.grid.Items = function (config) {
         tbar: this.getTopBar(config),
         sm: new Ext.grid.CheckboxSelectionModel(),
         baseParams: {
-            action: 'mgr/item/getlist'
+            action: 'mgr/statuses/getlist'
         },
         listeners: {
             rowDblClick: function (grid, rowIndex, e) {
                 var row = grid.store.getAt(rowIndex);
-                this.updateItem(grid, e, row);
+                this.updateStatus(grid, e, row);
             }
         },
         viewConfig: {
@@ -34,7 +34,7 @@ ideas.grid.Items = function (config) {
         remoteSort: true,
         autoHeight: true,
     });
-    ideas.grid.Items.superclass.constructor.call(this, config);
+    ideas.grid.Statuses.superclass.constructor.call(this, config);
 
     // Clear selection on grid refresh
     this.store.on('load', function () {
@@ -43,7 +43,7 @@ ideas.grid.Items = function (config) {
         }
     }, this);
 };
-Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
+Ext.extend(ideas.grid.Statuses, MODx.grid.Grid, {
     windows: {},
 
     getMenu: function (grid, rowIndex) {
@@ -55,9 +55,9 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
         this.addContextMenuItem(menu);
     },
 
-    createItem: function (btn, e) {
+    createStatus: function (btn, e) {
         var w = MODx.load({
-            xtype: 'ideas-item-window-create',
+            xtype: 'ideas-status-window-create',
             id: Ext.id(),
             listeners: {
                 success: {
@@ -72,7 +72,7 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
         w.show(e.target);
     },
 
-    updateItem: function (btn, e, row) {
+    updateStatus: function (btn, e, row) {
         if (typeof(row) != 'undefined') {
             this.menu.record = row.data;
         }
@@ -84,14 +84,14 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
         MODx.Ajax.request({
             url: this.config.url,
             params: {
-                action: 'mgr/item/get',
+                action: 'mgr/status/get',
                 id: id
             },
             listeners: {
                 success: {
                     fn: function (r) {
                         var w = MODx.load({
-                            xtype: 'ideas-item-window-update',
+                            xtype: 'ideas-status-window-update',
                             id: Ext.id(),
                             record: r,
                             listeners: {
@@ -111,21 +111,21 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
         });
     },
 
-    removeItem: function () {
+    removeStatus: function () {
         var ids = this._getSelectedIds();
         if (!ids.length) {
             return false;
         }
         MODx.msg.confirm({
             title: ids.length > 1
-                ? _('ideas_items_remove')
-                : _('ideas_item_remove'),
+                ? _('ideas_statuses_remove')
+                : _('ideas_status_remove'),
             text: ids.length > 1
-                ? _('ideas_items_remove_confirm')
-                : _('ideas_item_remove_confirm'),
+                ? _('ideas_statuses_remove_confirm')
+                : _('ideas_status_remove_confirm'),
             url: this.config.url,
             params: {
-                action: 'mgr/item/remove',
+                action: 'mgr/status/remove',
                 ids: Ext.util.JSON.encode(ids),
             },
             listeners: {
@@ -139,7 +139,7 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
         return true;
     },
 
-    disableItem: function () {
+    disableStatus: function () {
         var ids = this._getSelectedIds();
         if (!ids.length) {
             return false;
@@ -147,7 +147,7 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
         MODx.Ajax.request({
             url: this.config.url,
             params: {
-                action: 'mgr/item/disable',
+                action: 'mgr/status/disable',
                 ids: Ext.util.JSON.encode(ids),
             },
             listeners: {
@@ -160,7 +160,7 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
         })
     },
 
-    enableItem: function () {
+    enableStatus: function () {
         var ids = this._getSelectedIds();
         if (!ids.length) {
             return false;
@@ -168,7 +168,7 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
         MODx.Ajax.request({
             url: this.config.url,
             params: {
-                action: 'mgr/item/enable',
+                action: 'mgr/status/enable',
                 ids: Ext.util.JSON.encode(ids),
             },
             listeners: {
@@ -182,37 +182,22 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'name',  'type', 'status', 'user', 'user_id', 'active', 'actions'];
+        return ['id', 'name',  'description', 'rank',  'active', 'actions'];
     },
 
     getColumns: function () {
         return [{
-            header: _('ideas_item_id'),
+            header: _('ideas_status_id'),
             dataIndex: 'id',
             sortable: true,
             width: 70
         }, {
-            header: _('ideas_item_name'),
+            header: _('ideas_status_name'),
             dataIndex: 'name',
             sortable: true,
             width: 200,
         },{
-            header: _('ideas_item_status'),
-            dataIndex: 'status',
-            sortable: true,
-            width: 150,
-        }, {
-            header: _('ideas_item_type'),
-            dataIndex: 'type',
-            sortable: true,
-            width: 100,
-        }, {
-            header: _('ideas_item_user'),
-            dataIndex: 'user',
-            sortable: true,
-            width: 150,
-        },{
-            header: _('ideas_item_active'),
+            header: _('ideas_status_active'),
             dataIndex: 'active',
             renderer: ideas.utils.renderBoolean,
             sortable: true,
@@ -229,8 +214,8 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
 
     getTopBar: function () {
         return [{
-            text: '<i class="icon icon-plus"></i>&nbsp;' + _('ideas_item_create'),
-            handler: this.createItem,
+            text: '<i class="icon icon-plus"></i>&nbsp;' + _('ideas_status_create'),
+            handler: this.createStatus,
             scope: this
         }, '->', {
             xtype: 'ideas-field-search',
@@ -294,4 +279,4 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
         this.getBottomToolbar().changePage(1);
     },
 });
-Ext.reg('ideas-grid-items', ideas.grid.Items);
+Ext.reg('ideas-grid-statuses', ideas.grid.Statuses);

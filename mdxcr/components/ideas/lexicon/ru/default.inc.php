@@ -37,3 +37,30 @@ $_lang['ideas_grid_search'] = 'Поиск';
 $_lang['ideas_grid_actions'] = 'Действия';
 
 $_lang['ideas_items_user_anonimus'] = 'Аноним';
+
+
+$_lang['ideas_statuses'] = 'Статусы';
+$_lang['ideas_status_id'] = 'Id';
+$_lang['ideas_status_name'] = 'Название';
+$_lang['ideas_status_description'] = 'Описание';
+$_lang['ideas_item_active'] = 'Активно';
+
+
+$_lang['ideas_status_create'] = 'Добавить статус';
+$_lang['ideas_status_update'] = 'Изменить статус';
+$_lang['ideas_status_enable'] = 'Включить статус';
+$_lang['ideas_statuses_enable'] = 'Включить статусы';
+$_lang['ideas_status_disable'] = 'Отключить статус';
+$_lang['ideas_statuses_disable'] = 'Отключить статусы';
+$_lang['ideas_status_remove'] = 'Удалить статус';
+$_lang['ideas_statuses_remove'] = 'Удалить статусы';
+$_lang['ideas_status_remove_confirm'] = 'Вы уверены, что хотите удалить этот статус?';
+$_lang['ideas_statuses_remove_confirm'] = 'Вы уверены, что хотите удалить эти статусы?';
+$_lang['ideas_status_active'] = 'Включено';
+
+$_lang['ideas_status_err_name'] = 'Вы должны указать имя статуса.';
+$_lang['ideas_status_err_ae'] = 'Статус с таким именем уже существует.';
+$_lang['ideas_status_err_nf'] = 'Статус не найден.';
+$_lang['ideas_status_err_ns'] = 'Статус не указан.';
+$_lang['ideas_status_err_remove'] = 'Ошибка при удалении статуса.';
+$_lang['ideas_status_err_save'] = 'Ошибка при сохранении статуса.';
