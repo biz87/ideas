@@ -90,3 +90,25 @@ ideas.combo.Type = function (config) {
 Ext.extend(ideas.combo.Type,MODx.combo.ComboBox);
 Ext.reg('ideas-combo-type',ideas.combo.Type);
 
+
+ideas.combo.Status = function (config) {
+    config = config || {};
+
+    Ext.applyIf(config,{
+        name: 'status'
+        ,hiddenName: 'status'
+        ,displayField: 'name'
+        ,valueField: 'id'
+        ,fields: ['name','id']
+        ,pageSize: 10
+        ,url: ideas.config.connector_url
+        ,baseParams: {
+            action: 'mgr/status/getlist',
+            combo: true,
+        }
+    });
+    ideas.combo.Status.superclass.constructor.call(this,config);
+};
+Ext.extend(ideas.combo.Status,MODx.combo.ComboBox);
+Ext.reg('ideas-combo-status',ideas.combo.Status);
+

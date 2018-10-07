@@ -93,7 +93,7 @@ Ext.extend(ideas.window.UpdateItem, MODx.Window, {
             anchor: '99%',
             height: 150,
         }, {
-            xtype: 'textfield',
+            xtype: 'ideas-combo-status',
             fieldLabel: _('ideas_item_status'),
             name: 'status',
             id: config.id + '-status',
