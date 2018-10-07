@@ -2,7 +2,7 @@
 <model package="ideas" baseClass="xPDOObject" platform="mysql" defaultEngine="InnoDB" phpdoc-package="ideas"
        version="1.1">
 
-    <object class="ideasPosts" table="ideas_posts" extends="xPDOSimpleObject">
+    <object class="ideasPost" table="ideas_posts" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
         <field key="description" dbtype="text" phptype="string" null="true" default=""/>
         <field key="status" dbtype="tinyint" precision="3"  attributes="unsigned" phptype="integer" null="true"
@@ -48,7 +48,7 @@
             <column key="active" length="" collation="A" null="false"/>
         </index>
 
-        <aggregate alias="Ideas" class="ideasPosts" local="id" foreign="status" cardinality="many" owner="local"/>
+        <aggregate alias="Ideas" class="ideasPost" local="id" foreign="status" cardinality="many" owner="local"/>
     </object>
 
 
@@ -64,7 +64,7 @@
             <column key="active" length="" collation="A" null="false"/>
         </index>
 
-        <aggregate alias="Ideas" class="ideasPosts" local="id" foreign="type" cardinality="many" owner="local"/>
+        <aggregate alias="Ideas" class="ideasPost" local="id" foreign="type" cardinality="many" owner="local"/>
     </object>
 
 </model>
