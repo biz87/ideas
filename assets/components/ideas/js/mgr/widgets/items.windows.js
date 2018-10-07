@@ -21,7 +21,7 @@ ideas.window.CreateItem = function (config) {
 Ext.extend(ideas.window.CreateItem, MODx.Window, {
 
     getFields: function (config) {
-        return [{
+        return [ {
             xtype: 'textfield',
             fieldLabel: _('ideas_item_name'),
             name: 'name',
@@ -33,14 +33,35 @@ Ext.extend(ideas.window.CreateItem, MODx.Window, {
             fieldLabel: _('ideas_item_description'),
             name: 'description',
             id: config.id + '-description',
+            anchor: '99%',
             height: 150,
-            anchor: '99%'
+        }, {
+            xtype: 'ideas-combo-status',
+            fieldLabel: _('ideas_item_status'),
+            name: 'status',
+            id: config.id + '-status',
+            anchor: '99%',
+            allowBlank: false,
+        },{
+            xtype: 'ideas-combo-type',
+            fieldLabel: _('ideas_item_type'),
+            name: 'type',
+            id: config.id + '-type',
+            anchor: '99%',
+            allowBlank: false,
+        }, {
+            xtype: 'ideas-combo-user',
+            fieldLabel: _('ideas_item_user'),
+            name: 'user_id',
+            id: config.id + '-user_id',
+            anchor: '99%',
+            allowBlank: false,
         }, {
             xtype: 'xcheckbox',
             boxLabel: _('ideas_item_active'),
             name: 'active',
             id: config.id + '-active',
-            checked: true,
+            checked:true,
         }];
     },
 
@@ -108,7 +129,7 @@ Ext.extend(ideas.window.UpdateItem, MODx.Window, {
             allowBlank: false,
         }, {
             xtype: 'ideas-combo-user',
-            fieldLabel: _('ideas_item_user_id'),
+            fieldLabel: _('ideas_item_user'),
             name: 'user_id',
             id: config.id + '-user_id',
             anchor: '99%',
