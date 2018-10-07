@@ -67,3 +67,25 @@ ideas.combo.User = function(config) {
 };
 Ext.extend(ideas.combo.User,MODx.combo.ComboBox);
 Ext.reg('ideas-combo-user',ideas.combo.User);
+
+
+ideas.combo.Type = function(config) {
+    config = config || {};
+    Ext.applyIf(config,{
+        name: 'type'
+        ,hiddenName: 'user_id'
+        ,displayField: 'email'
+        ,valueField: 'id'
+        ,fields: ['email', 'fullname', 'username','id']
+        ,pageSize: 20
+        ,url: ideas.config.connector_url
+        ,baseParams: {
+            action: 'security/user/getlist'
+        }
+        ,typeAhead: true
+        ,editable: true
+    });
+    MODx.combo.Type.superclass.constructor.call(this,config);
+};
+Ext.extend(ideas.combo.Type,MODx.combo.ComboBox);
+Ext.reg('ideas-combo-type',ideas.combo.Type);
