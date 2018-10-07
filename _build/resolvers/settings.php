@@ -62,7 +62,7 @@ if ($transport->xpdo) {
                     'name' => 'Проблемы',
                 ),
             );
-            foreach ($types as $id => $type) {
+            foreach ($types as $id => $properties) {
                 if (!$type = $modx->getCount('ideasType', array('id' => $id))) {
                     $type = $modx->newObject('ideasType', array_merge(array(
                         'active' => 1,
