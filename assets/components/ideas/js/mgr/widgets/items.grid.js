@@ -182,7 +182,7 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'name', 'description', 'active', 'actions'];
+        return ['id', 'name',  'type', 'status', 'active', 'actions'];
     },
 
     getColumns: function () {
@@ -196,11 +196,16 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
             dataIndex: 'name',
             sortable: true,
             width: 200,
+        },{
+            header: _('ideas_item_status'),
+            dataIndex: 'status',
+            sortable: true,
+            width: 200,
         }, {
-            header: _('ideas_item_description'),
-            dataIndex: 'description',
-            sortable: false,
-            width: 250,
+            header: _('ideas_item_type'),
+            dataIndex: 'type',
+            sortable: true,
+            width: 200,
         }, {
             header: _('ideas_item_active'),
             dataIndex: 'active',
