@@ -20,7 +20,19 @@ class ideasItemCreateProcessor extends modObjectCreateProcessor
             $this->modx->error->addField('name', $this->modx->lexicon('ideas_item_err_ae'));
         }
 
+
         return parent::beforeSet();
+    }
+
+    public function beforeSave()
+    {
+        $this->object->fromArray(array(
+            'createdon' => time(),
+        ));
+
+
+
+        return parent::beforeSave();
     }
 
 }
