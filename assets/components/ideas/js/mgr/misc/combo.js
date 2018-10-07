@@ -46,3 +46,24 @@ Ext.extend(ideas.combo.Search, Ext.form.TwinTriggerField, {
 });
 Ext.reg('ideas-combo-search', ideas.combo.Search);
 Ext.reg('ideas-field-search', ideas.combo.Search);
+
+ideas.combo.User = function(config) {
+    config = config || {};
+    Ext.applyIf(config,{
+        name: 'user_id'
+        ,hiddenName: 'user_id'
+        ,displayField: 'email'
+        ,valueField: 'id'
+        ,fields: ['email', 'fullname', 'username','id']
+        ,pageSize: 20
+        ,url: MODx.config.connector_url
+        ,baseParams: {
+            action: 'security/user/getlist'
+        }
+        ,typeAhead: true
+        ,editable: true
+    });
+    MODx.combo.User.superclass.constructor.call(this,config);
+};
+Ext.extend(ideas.combo.User,MODx.combo.ComboBox);
+Ext.reg('ideas-combo-user',ideas.combo.User);

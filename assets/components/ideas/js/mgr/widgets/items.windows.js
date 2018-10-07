@@ -93,6 +93,27 @@ Ext.extend(ideas.window.UpdateItem, MODx.Window, {
             anchor: '99%',
             height: 150,
         }, {
+            xtype: 'textfield',
+            fieldLabel: _('ideas_item_status'),
+            name: 'status',
+            id: config.id + '-status',
+            anchor: '99%',
+            allowBlank: false,
+        },{
+            xtype: 'textfield',
+            fieldLabel: _('ideas_item_type'),
+            name: 'type',
+            id: config.id + '-type',
+            anchor: '99%',
+            allowBlank: false,
+        }, {
+            xtype: 'ideas-combo-user',
+            fieldLabel: _('ideas_item_user_id'),
+            name: 'user_id',
+            id: config.id + '-user_id',
+            anchor: '99%',
+            allowBlank: false,
+        }, {
             xtype: 'xcheckbox',
             boxLabel: _('ideas_item_active'),
             name: 'active',

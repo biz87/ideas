@@ -182,7 +182,7 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'name',  'type', 'status', 'user', 'active', 'actions'];
+        return ['id', 'name',  'type', 'status', 'user', 'user_id', 'active', 'actions'];
     },
 
     getColumns: function () {

@@ -29,6 +29,8 @@ class ideasItemUpdateProcessor extends modObjectUpdateProcessor
      */
     public function beforeSet()
     {
+        $post = $this->getProperties();
+        //$this->modx->log(1, '[ideas save] '.print_r($post, 1));
         $id = (int)$this->getProperty('id');
         $name = trim($this->getProperty('name'));
         if (empty($id)) {
