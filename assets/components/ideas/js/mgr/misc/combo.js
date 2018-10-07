@@ -54,7 +54,7 @@ ideas.combo.User = function(config) {
         ,hiddenName: 'user_id'
         ,displayField: 'email'
         ,valueField: 'id'
-        ,fields: ['email', 'fullname', 'username','id']
+        ,fields: ['email', 'username','id']
         ,pageSize: 20
         ,url: MODx.config.connector_url
         ,baseParams: {
@@ -69,23 +69,24 @@ Ext.extend(ideas.combo.User,MODx.combo.ComboBox);
 Ext.reg('ideas-combo-user',ideas.combo.User);
 
 
-ideas.combo.Type = function(config) {
+ideas.combo.Type = function (config) {
     config = config || {};
+
     Ext.applyIf(config,{
         name: 'type'
-        ,hiddenName: 'user_id'
-        ,displayField: 'email'
+        ,hiddenName: 'type'
+        ,displayField: 'name'
         ,valueField: 'id'
-        ,fields: ['email', 'fullname', 'username','id']
-        ,pageSize: 20
+        ,fields: ['name','id']
+        ,pageSize: 10
         ,url: ideas.config.connector_url
         ,baseParams: {
-            action: 'security/user/getlist'
+            action: 'mgr/item/type/getlist',
+            combo: true,
         }
-        ,typeAhead: true
-        ,editable: true
     });
     MODx.combo.Type.superclass.constructor.call(this,config);
 };
 Ext.extend(ideas.combo.Type,MODx.combo.ComboBox);
 Ext.reg('ideas-combo-type',ideas.combo.Type);
+
