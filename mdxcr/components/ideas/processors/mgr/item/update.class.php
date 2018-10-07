@@ -20,6 +20,10 @@ class ideasItemUpdateProcessor extends modObjectUpdateProcessor
             return $this->modx->lexicon('access_denied');
         }
 
+        $this->object->fromArray(array(
+            'updatedon' => time(),
+        ));
+
         return true;
     }
 
@@ -45,6 +49,8 @@ class ideasItemUpdateProcessor extends modObjectUpdateProcessor
 
         return parent::beforeSet();
     }
+
+
 }
 
 return 'ideasItemUpdateProcessor';
