@@ -11,6 +11,7 @@ $_lang['ideas_item_name'] = 'Название';
 $_lang['ideas_item_description'] = 'Описание';
 $_lang['ideas_item_type'] = ' Тип идеи';
 $_lang['ideas_item_status'] = 'Статус идеи';
+$_lang['ideas_item_user'] = 'Пользователь';
 $_lang['ideas_item_active'] = 'Активно';
 
 $_lang['ideas_item_create'] = 'Создать пост';

@@ -52,6 +52,7 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
     public function prepareRow(xPDOObject $object)
     {
         $array = $object->toArray();
+        $this->modx->log(1, print_r($array, true));
         $array['actions'] = [];
 
         // Edit

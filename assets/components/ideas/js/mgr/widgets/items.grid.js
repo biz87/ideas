@@ -207,6 +207,11 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
             sortable: true,
             width: 200,
         }, {
+            header: _('ideas_item_user'),
+            dataIndex: 'user_id',
+            sortable: true,
+            width: 200,
+        },{
             header: _('ideas_item_active'),
             dataIndex: 'active',
             renderer: ideas.utils.renderBoolean,
