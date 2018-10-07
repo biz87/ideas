@@ -32,16 +32,24 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
      */
     public function prepareQueryBeforeCount(xPDOQuery $c)
     {
-        $query = trim($this->getProperty('query'));
-        if ($query) {
-            $c->where([
-                'name:LIKE' => "%{$query}%",
-                'OR:description:LIKE' => "%{$query}%",
-            ]);
+        if ($this->getProperty('combo')) {
+            $c->select('id,name');
+            $c->where(array('active' => 1));
+        }else{
+            $query = trim($this->getProperty('query'));
+            if ($query) {
+                $c->where([
+                    'name:LIKE' => "%{$query}%",
+                    'OR:description:LIKE' => "%{$query}%",
+                ]);
+            }
+
         }
+
 
         return $c;
     }
+
 
 
     /**

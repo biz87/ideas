@@ -81,11 +81,11 @@ ideas.combo.Type = function (config) {
         ,pageSize: 10
         ,url: ideas.config.connector_url
         ,baseParams: {
-            action: 'mgr/item/type/getlist',
+            action: 'mgr/type/getlist',
             combo: true,
         }
     });
-    MODx.combo.Type.superclass.constructor.call(this,config);
+    ideas.combo.Type.superclass.constructor.call(this,config);
 };
 Ext.extend(ideas.combo.Type,MODx.combo.ComboBox);
 Ext.reg('ideas-combo-type',ideas.combo.Type);

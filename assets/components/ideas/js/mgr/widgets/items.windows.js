@@ -103,6 +103,7 @@ Ext.extend(ideas.window.UpdateItem, MODx.Window, {
             xtype: 'ideas-combo-type',
             fieldLabel: _('ideas_item_type'),
             name: 'type',
+            id: config.id + '-type',
             anchor: '99%',
             allowBlank: false,
         }, {
