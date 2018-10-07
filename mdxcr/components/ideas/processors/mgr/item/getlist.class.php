@@ -53,9 +53,10 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
     {
         $array = $object->toArray();
 
-
+        // Get user data
         if(isset($array['user_id']) && $array['user_id'] > 0){
-            $userProfile = $this->modx->getObject('modUserProfile', array('internalKey' => $array['user_id']));
+            $userProfile = $object->getOne('UserProfile');
+
             if($userProfile){
                 if($fullname = $userProfile->get('fullname')){
                     $array['user'] = $fullname;
@@ -65,11 +66,33 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
             }else{
                 $array['user'] = '';
             }
+
+
         }else{
             $array['user'] = $this->modx->lexicon('ideas_items_user_anonimus');
         }
 
-        $this->modx->log(1, print_r($array, true));
+
+        // Get Status data
+        if(isset($array['status']) && $array['status'] > 0){
+            $status = $object->getOne('Status');
+
+            if($status){
+                $array['status'] = $status->get('name');
+            }
+        }
+
+        // Get type data
+        if(isset($array['type']) && $array['type'] > 0){
+            $type = $object->getOne('Type');
+
+            if($type){
+                $array['type'] = $type->get('name');
+            }
+        }
+
+
+
         $array['actions'] = [];
 
         // Edit

@@ -200,17 +200,17 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
             header: _('ideas_item_status'),
             dataIndex: 'status',
             sortable: true,
-            width: 200,
+            width: 150,
         }, {
             header: _('ideas_item_type'),
             dataIndex: 'type',
             sortable: true,
-            width: 200,
+            width: 150,
         }, {
             header: _('ideas_item_user'),
             dataIndex: 'user',
             sortable: true,
-            width: 200,
+            width: 150,
         },{
             header: _('ideas_item_active'),
             dataIndex: 'active',
