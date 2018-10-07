@@ -11,13 +11,14 @@ if (!$ideas) {
 $allow_jquery_modal = $modx->getOption('ideas_allow_jquery_modal', null, true);
 if($allow_jquery_modal){
     $modx->regClientCSS(MODX_ASSETS_URL . 'components/ideas/css/jquery.modal.min.css');
+    $modx->regClientCSS(MODX_ASSETS_URL . 'components/ideas/css/defau.css');
     $modx->regClientScript(MODX_ASSETS_URL. 'components/ideas/js/jquery.modal.min.js');
 }
 
 
-//
-//$pdoFetch = $modx->getService('pdoFetch');
-//$pdo = $modx->getService('pdoTools');
+
+$pdoFetch = $modx->getService('pdoFetch');
+$pdo = $modx->getService('pdoTools');
 //
 //$ideasPosts = $pdoFetch->getCollection(
 //    'ideasPosts',
@@ -53,4 +54,4 @@ if($allow_jquery_modal){
 //
 //
 //
-//return $pdo->getChunk('tpl.ideas.tpl', array('tabs' => $tabs));
+return $pdo->getChunk('tpl.ideas.tpl', array('tabs' => $tabs));

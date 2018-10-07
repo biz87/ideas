@@ -1,0 +1,41 @@
+#ideasBtn{
+    position: fixed;
+    left: -35px;
+    top: calc(50% - 60px);
+    transform: rotate(270deg);
+    height: 50px;
+    line-height: 50px;
+    padding: 0 40px;
+    background: #f00;
+    color: #fff;
+}
+
+.modal{
+    max-width:100vw;
+    padding:0;
+    overflow: visible;
+}
+
+.ideasWrapper{
+    padding:20px;
+}
+
+.ideasWrapper .ideasTabsNav{
+    color: #000;
+    background-color: #f1f1f1;
+}
+
+.ideasWrapper .ideasTabsNav a{
+    display:inline-block;
+    color:#000;
+    height:50px;
+    line-height:50px;
+    padding:0 20px;
+}
+
+.ideasWrapper .ideasTabsNav a:hover,
+.ideasWrapper .ideasTabsNav a.active{
+    background:#000;
+    color:#fff;
+    text-decoration:none;
+}

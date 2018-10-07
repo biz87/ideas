@@ -1,14 +1,21 @@
+<div class="container">
+    <p><a href="#ex1" rel="modal:open">Идеи</a></p>
+</div>
+
+
 <div id="ex1" class="modal">
-    {foreach $tabs as $tab}
-        <h2>Вкладка {$tab.tab_name}</h2>
-        {foreach $tab.posts as $post}
-            <div class="ideasPost">
-                <h3>{$post['name']}<h3>
-                        {if $post.description?}{/if}
-            </div>
-        {/foreach}
-    {/foreach}
+    <div class="ideasWrapper">
+        <div class="ideasTabsNav">
+            {'!pdoResources' | snippet : [
+            'loadModels' => 'ideas',
+            'class' => 'ideasType',
+            'sortby' => 'id',
+            'sortdir' => 'asc'
+            'tpl' => '@INLINE <a href="#" {if $idx==1}class="active"{/if}>{$name}</a>'
+            ]}
 
+        </div>
 
+    </div>
     <a href="#" rel="modal:close">Close</a>
 </div>
