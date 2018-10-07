@@ -4,8 +4,8 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
 {
     public $objectType = 'ideasType';
     public $classKey = 'ideasType';
-    public $defaultSortField = 'id';
-    public $defaultSortDirection = 'DESC';
+    public $defaultSortField = 'rank';
+    public $defaultSortDirection = 'ASC';
     //public $permission = 'list';
 
 
