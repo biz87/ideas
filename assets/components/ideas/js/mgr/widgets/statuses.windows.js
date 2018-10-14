@@ -35,7 +35,7 @@ Ext.extend(ideas.window.CreateStatus, MODx.Window, {
             id: config.id + '-description',
             anchor: '99%',
             height: 150,
-        },  {
+        }, {
             xtype: 'xcheckbox',
             boxLabel: _('ideas_status_active'),
             name: 'active',
@@ -93,6 +93,12 @@ Ext.extend(ideas.window.UpdateStatus, MODx.Window, {
             anchor: '99%',
             height: 150,
         }, {
+            xtype: 'numberfield',
+            fieldLabel: _('ideas_status_rank'),
+            name: 'rank',
+            anchor: '99%',
+            id: config.id + '-rank',
+        },{
             xtype: 'xcheckbox',
             boxLabel: _('ideas_status_active'),
             name: 'active',

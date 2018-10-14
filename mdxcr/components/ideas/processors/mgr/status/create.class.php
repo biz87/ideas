@@ -23,6 +23,18 @@ class ideasStatusCreateProcessor extends modObjectCreateProcessor
         return parent::beforeSet();
     }
 
+    /**
+     * @return bool
+     */
+    public function beforeSave()
+    {
+        $this->object->fromArray(array(
+            'rank' => $this->modx->getCount($this->classKey),
+        ));
+
+        return parent::beforeSave();
+    }
+
 }
 
 return 'ideasStatusCreateProcessor';
