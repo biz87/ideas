@@ -2,8 +2,8 @@
 
 class ideasItemGetProcessor extends modObjectGetProcessor
 {
-    public $objectType = 'ideasPost';
-    public $classKey = 'ideasPost';
+    public $objectType = 'ideasStatus';
+    public $classKey = 'ideasStatus';
     public $languageTopics = ['ideas:default'];
     //public $permission = 'view';
 

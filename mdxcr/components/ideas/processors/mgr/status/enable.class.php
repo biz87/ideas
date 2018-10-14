@@ -2,8 +2,8 @@
 
 class ideasItemEnableProcessor extends modObjectProcessor
 {
-    public $objectType = 'ideasPost';
-    public $classKey = 'ideasPost';
+    public $objectType = 'ideasStatus';
+    public $classKey = 'ideasStatus';
     public $languageTopics = ['ideas'];
     //public $permission = 'save';
 
@@ -19,13 +19,13 @@ class ideasItemEnableProcessor extends modObjectProcessor
 
         $ids = $this->modx->fromJSON($this->getProperty('ids'));
         if (empty($ids)) {
-            return $this->failure($this->modx->lexicon('ideas_item_err_ns'));
+            return $this->failure($this->modx->lexicon('ideas_status_err_ns'));
         }
 
         foreach ($ids as $id) {
             /** @var ideasItem $object */
             if (!$object = $this->modx->getObject($this->classKey, $id)) {
-                return $this->failure($this->modx->lexicon('ideas_item_err_nf'));
+                return $this->failure($this->modx->lexicon('ideas_status_err_nf'));
             }
 
             $object->set('active', true);
