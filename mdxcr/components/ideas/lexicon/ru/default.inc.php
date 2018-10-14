@@ -39,7 +39,7 @@ $_lang['ideas_grid_actions'] = 'Действия';
 $_lang['ideas_items_user_anonimus'] = 'Аноним';
 
 
-$_lang['statuses_intro_msg'] = '<strong>Управление статусами</strong> <br> Вы можете выделять сразу несколько статусов при помощи Shift или Ctrl.';
+$_lang['ideas_statuses_intro_msg'] = '<strong>Управление статусами</strong> <br> Вы можете выделять сразу несколько статусов при помощи Shift или Ctrl.';
 $_lang['ideas_statuses'] = 'Статусы';
 $_lang['ideas_status_id'] = 'Id';
 $_lang['ideas_status_name'] = 'Название';
