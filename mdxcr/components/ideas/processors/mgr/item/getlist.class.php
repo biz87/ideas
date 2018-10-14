@@ -58,10 +58,11 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
             $userProfile = $object->getOne('UserProfile');
 
             if($userProfile){
-                if($fullname = $userProfile->get('fullname')){
-                    $array['user'] = $fullname;
+                if(!empty($userProfile->get('fullname'))){
+                    $array['user'] = $userProfile->get('fullname');
                 }else{
-                    $array['user'] = $userProfile->get('username');
+                    $user = $object->getOne('User');
+                    $array['user'] = $user->get('username');
                 }
             }else{
                 $array['user'] = '';
