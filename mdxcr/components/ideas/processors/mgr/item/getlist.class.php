@@ -74,6 +74,9 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
         }
 
 
+        $array['vote_for'] = 0;
+        $array['vote_aganist'] = 0;
+
         // Get Status data
         if(isset($array['status']) && $array['status'] > 0){
             $status = $object->getOne('Status');

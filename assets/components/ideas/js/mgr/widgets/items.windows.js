@@ -56,7 +56,21 @@ Ext.extend(ideas.window.CreateItem, MODx.Window, {
             id: config.id + '-user_id',
             anchor: '99%',
             allowBlank: false,
-        }, {
+        },
+        //     {
+        //     xtype: 'numberfield',
+        //     fieldLabel: _('ideas_item_vote_for'),
+        //     name: 'vote_for',
+        //     id: config.id + '-vote_for',
+        //     anchor: '99%',
+        // }, {
+        //     xtype: 'numberfield',
+        //     fieldLabel: _('ideas_item_vote_aganist'),
+        //     name: 'vote_aganist',
+        //     id: config.id + '-vote_aganist',
+        //     anchor: '99%',
+        // },
+            {
             xtype: 'xcheckbox',
             boxLabel: _('ideas_item_active'),
             name: 'active',
