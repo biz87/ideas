@@ -25,8 +25,8 @@ $_lang['ideas_items_remove'] = 'Удалить посты';
 $_lang['ideas_item_remove_confirm'] = 'Вы уверены, что хотите удалить этот пост?';
 $_lang['ideas_items_remove_confirm'] = 'Вы уверены, что хотите удалить эти посты?';
 $_lang['ideas_item_active'] = 'Включено';
-$_lang['ideas_item_vote_for'] = 'Согласны';
-$_lang['ideas_item_vote_aganist'] = 'Несогласны';
+$_lang['ideas_item_vote_for'] = 'За';
+$_lang['ideas_item_vote_aganist'] = 'Против';
 
 $_lang['ideas_item_err_name'] = 'Вы должны указать имя поста.';
 $_lang['ideas_item_err_ae'] = 'пост с таким именем уже существует.';
