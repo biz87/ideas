@@ -57,7 +57,7 @@ Ext.extend(ideas.grid.Types, MODx.grid.Grid, {
 
     createType: function (btn, e) {
         var w = MODx.load({
-            xtype: 'ideas-status-window-type',
+            xtype: 'ideas-type-window-create',
             id: Ext.id(),
             listeners: {
                 success: {
