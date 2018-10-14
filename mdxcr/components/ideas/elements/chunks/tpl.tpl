@@ -14,7 +14,9 @@
                     {if $type.posts | count > 0}
                         {foreach $type.posts as $post}
                             <div class="ideasPost">
-                                {$post | print}
+                                <h3>{$post.name}</h3>
+                                <p>{$post.description}</p>
+                                <span>{$post.status_name}</span>
                             </div>
                         {/foreach}
                     {else}
@@ -25,5 +27,4 @@
         </div>
 
     </div>
-    <a href="#" rel="modal:close">Close</a>
 </div>

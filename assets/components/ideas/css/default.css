@@ -51,6 +51,24 @@
 .ideasTabs .ideasTab.active{
     display:block;
     border:1px solid #ddd;
-    padding:20px;
+    padding:20px 0;
 
+}
+
+.ideasTabs .ideasTab .ideasPost{
+    border-bottom:1px solid;
+    padding:0 20px 10px 20px;
+    margin-bottom: 10px;
+    position:relative;
+}
+
+.ideasTabs .ideasTab .ideasPost:last-child{
+    border:none;
+}
+
+.ideasTabs .ideasTab .ideasPost span{
+    position: absolute;
+    font-size: 12px;
+    right: 20px;
+    top: 0;
 }
