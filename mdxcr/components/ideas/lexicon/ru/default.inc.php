@@ -38,7 +38,7 @@ $_lang['ideas_grid_actions'] = 'Действия';
 
 $_lang['ideas_items_user_anonimus'] = 'Аноним';
 
-
+//Statuses
 $_lang['ideas_statuses_intro_msg'] = '<strong>Управление статусами</strong> <br> Вы можете выделять сразу несколько статусов при помощи Shift или Ctrl.';
 $_lang['ideas_statuses'] = 'Статусы';
 $_lang['ideas_status_id'] = 'Id';
@@ -65,3 +65,31 @@ $_lang['ideas_status_err_nf'] = 'Статус не найден.';
 $_lang['ideas_status_err_ns'] = 'Статус не указан.';
 $_lang['ideas_status_err_remove'] = 'Ошибка при удалении статуса.';
 $_lang['ideas_status_err_save'] = 'Ошибка при сохранении статуса.';
+
+//Types
+$_lang['ideas_types_intro_msg'] = '<strong>Управление типами</strong> <br> Вы можете выделять сразу несколько статусов при помощи Shift или Ctrl.';
+$_lang['ideas_types'] = 'Типы';
+$_lang['ideas_type_id'] = 'Id';
+$_lang['ideas_type_name'] = 'Название';
+$_lang['ideas_type_description'] = 'Описание';
+$_lang['ideas_type_active'] = 'Активно';
+
+
+$_lang['ideas_type_create'] = 'Добавить тип';
+$_lang['ideas_type_update'] = 'Изменить тип';
+$_lang['ideas_type_enable'] = 'Включить тип';
+$_lang['ideas_types_enable'] = 'Включить типы';
+$_lang['ideas_type_disable'] = 'Отключить тип';
+$_lang['ideas_types_disable'] = 'Отключить типы';
+$_lang['ideas_type_remove'] = 'Удалить тип';
+$_lang['ideas_types_remove'] = 'Удалить типы';
+$_lang['ideas_type_remove_confirm'] = 'Вы уверены, что хотите удалить этот тип?';
+$_lang['ideas_types_remove_confirm'] = 'Вы уверены, что хотите удалить эти типы?';
+$_lang['ideas_types_active'] = 'Включено';
+
+$_lang['ideas_type_err_name'] = 'Вы должны указать имя типа.';
+$_lang['ideas_type_err_ae'] = 'Тип с таким именем уже существует.';
+$_lang['ideas_type_err_nf'] = 'Тип не найден.';
+$_lang['ideas_type_err_ns'] = 'Тип не указан.';
+$_lang['ideas_type_err_remove'] = 'Ошибка при удалении типа.';
+$_lang['ideas_type_err_save'] = 'Ошибка при сохранении типа.';

@@ -1,6 +1,6 @@
 <?php
 
-class ideasItemUpdateProcessor extends modObjectUpdateProcessor
+class ideasTypeUpdateProcessor extends modObjectUpdateProcessor
 {
     public $objectType = 'ideasPost';
     public $classKey = 'ideasPost';
@@ -34,17 +34,17 @@ class ideasItemUpdateProcessor extends modObjectUpdateProcessor
         $id = (int)$this->getProperty('id');
         $name = trim($this->getProperty('name'));
         if (empty($id)) {
-            return $this->modx->lexicon('ideas_item_err_ns');
+            return $this->modx->lexicon('ideas_type_err_ns');
         }
 
         if (empty($name)) {
-            $this->modx->error->addField('name', $this->modx->lexicon('ideas_item_err_name'));
+            $this->modx->error->addField('name', $this->modx->lexicon('ideas_type_err_name'));
         } elseif ($this->modx->getCount($this->classKey, ['name' => $name, 'id:!=' => $id])) {
-            $this->modx->error->addField('name', $this->modx->lexicon('ideas_item_err_ae'));
+            $this->modx->error->addField('name', $this->modx->lexicon('ideas_type_err_ae'));
         }
 
         return parent::beforeSet();
     }
 }
 
-return 'ideasItemUpdateProcessor';
+return 'ideasTypeUpdateProcessor';

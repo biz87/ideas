@@ -39,6 +39,16 @@ ideas.panel.Home = function (config) {
                     xtype: 'ideas-grid-statuses',
                     cls: 'main-wrapper',
                 }]
+            },{
+                title: _('ideas_types'),
+                layout: 'anchor',
+                items: [{
+                    html: _('ideas_types_intro_msg'),
+                    cls: 'panel-desc',
+                }, {
+                    xtype: 'ideas-grid-types',
+                    cls: 'main-wrapper',
+                }]
             }]
         }]
     });

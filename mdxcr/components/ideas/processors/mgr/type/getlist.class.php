@@ -1,6 +1,6 @@
 <?php
 
-class ideasItemGetListProcessor extends modObjectGetListProcessor
+class ideasTypeGetListProcessor extends modObjectGetListProcessor
 {
     public $objectType = 'ideasType';
     public $classKey = 'ideasType';
@@ -68,9 +68,9 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
         $array['actions'][] = [
             'cls' => '',
             'icon' => 'icon icon-edit',
-            'title' => $this->modx->lexicon('ideas_item_update'),
+            'title' => $this->modx->lexicon('ideas_type_update'),
             //'multiple' => $this->modx->lexicon('ideas_items_update'),
-            'action' => 'updateItem',
+            'action' => 'updateType',
             'button' => true,
             'menu' => true,
         ];
@@ -79,9 +79,9 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
             $array['actions'][] = [
                 'cls' => '',
                 'icon' => 'icon icon-power-off action-green',
-                'title' => $this->modx->lexicon('ideas_item_enable'),
-                'multiple' => $this->modx->lexicon('ideas_items_enable'),
-                'action' => 'enableItem',
+                'title' => $this->modx->lexicon('ideas_type_enable'),
+                'multiple' => $this->modx->lexicon('ideas_types_enable'),
+                'action' => 'enableType',
                 'button' => true,
                 'menu' => true,
             ];
@@ -89,9 +89,9 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
             $array['actions'][] = [
                 'cls' => '',
                 'icon' => 'icon icon-power-off action-gray',
-                'title' => $this->modx->lexicon('ideas_item_disable'),
-                'multiple' => $this->modx->lexicon('ideas_items_disable'),
-                'action' => 'disableItem',
+                'title' => $this->modx->lexicon('ideas_type_disable'),
+                'multiple' => $this->modx->lexicon('ideas_types_disable'),
+                'action' => 'disableType',
                 'button' => true,
                 'menu' => true,
             ];
@@ -101,9 +101,9 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
         $array['actions'][] = [
             'cls' => '',
             'icon' => 'icon icon-trash-o action-red',
-            'title' => $this->modx->lexicon('ideas_item_remove'),
-            'multiple' => $this->modx->lexicon('ideas_items_remove'),
-            'action' => 'removeItem',
+            'title' => $this->modx->lexicon('ideas_type_remove'),
+            'multiple' => $this->modx->lexicon('ideas_types_remove'),
+            'action' => 'removeType',
             'button' => true,
             'menu' => true,
         ];
@@ -113,4 +113,4 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
 
 }
 
-return 'ideasItemGetListProcessor';
+return 'ideasTypeGetListProcessor';

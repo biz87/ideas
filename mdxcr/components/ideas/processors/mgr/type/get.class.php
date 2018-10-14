@@ -1,9 +1,9 @@
 <?php
 
-class ideasItemGetProcessor extends modObjectGetProcessor
+class ideasTypeGetProcessor extends modObjectGetProcessor
 {
-    public $objectType = 'ideasPost';
-    public $classKey = 'ideasPost';
+    public $objectType = 'ideasType';
+    public $classKey = 'ideasType';
     public $languageTopics = ['ideas:default'];
     //public $permission = 'view';
 
@@ -25,4 +25,4 @@ class ideasItemGetProcessor extends modObjectGetProcessor
 
 }
 
-return 'ideasItemGetProcessor';
+return 'ideasTypeGetProcessor';

@@ -58,8 +58,10 @@ class ideasHomeManagerController extends modExtraManagerController
         $this->addJavascript($this->ideas->config['jsUrl'] . 'mgr/misc/combo.js');
         $this->addJavascript($this->ideas->config['jsUrl'] . 'mgr/widgets/items.grid.js');
         $this->addJavascript($this->ideas->config['jsUrl'] . 'mgr/widgets/statuses.grid.js');
+        $this->addJavascript($this->ideas->config['jsUrl'] . 'mgr/widgets/types.grid.js');
         $this->addJavascript($this->ideas->config['jsUrl'] . 'mgr/widgets/items.windows.js');
         $this->addJavascript($this->ideas->config['jsUrl'] . 'mgr/widgets/statuses.windows.js');
+        $this->addJavascript($this->ideas->config['jsUrl'] . 'mgr/widgets/types.windows.js');
         $this->addJavascript($this->ideas->config['jsUrl'] . 'mgr/widgets/home.panel.js');
         $this->addJavascript($this->ideas->config['jsUrl'] . 'mgr/sections/home.js');
 
