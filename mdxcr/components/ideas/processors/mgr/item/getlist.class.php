@@ -74,8 +74,8 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
         }
 
 
-        $array['vote_for'] = $this->modx->getCount('ideasVote');
-        $array['vote_aganist'] = $this->modx->getCount('ideasVote');
+        $array['vote_for'] = $this->modx->getCount('ideasVote', array('post_id' => $array['id'], 'vote' => 1));
+        $array['vote_aganist'] = $this->modx->getCount('ideasVote', array('post_id' => $array['id'], 'vote' => -1));
 
         // Get Status data
         if(isset($array['status']) && $array['status'] > 0){
