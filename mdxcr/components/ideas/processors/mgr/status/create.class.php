@@ -1,6 +1,6 @@
 <?php
 
-class ideasItemCreateProcessor extends modObjectCreateProcessor
+class ideasStatusCreateProcessor extends modObjectCreateProcessor
 {
     public $objectType = 'ideasStatus';
     public $classKey = 'ideasStatus';
@@ -25,4 +25,4 @@ class ideasItemCreateProcessor extends modObjectCreateProcessor
 
 }
 
-return 'ideasItemCreateProcessor';
+return 'ideasStatusCreateProcessor';

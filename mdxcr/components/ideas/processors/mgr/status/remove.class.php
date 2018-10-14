@@ -1,6 +1,6 @@
 <?php
 
-class ideasItemRemoveProcessor extends modObjectProcessor
+class ideasStatusRemoveProcessor extends modObjectProcessor
 {
     public $objectType = 'ideasStatus';
     public $classKey = 'ideasStatus';
@@ -36,4 +36,4 @@ class ideasItemRemoveProcessor extends modObjectProcessor
 
 }
 
-return 'ideasItemRemoveProcessor';
+return 'ideasStatusRemoveProcessor';
