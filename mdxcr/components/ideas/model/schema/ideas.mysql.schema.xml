@@ -72,7 +72,7 @@
     <object class="ideasVote" table="ideas_votes" extends="xPDOSimpleObject">
         <field key="post_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false"/>
         <field key="user_id" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false"/>
-        <field key="rank" dbtype="tinyint" precision="1" phptype="integer"  null="false"/>
+        <field key="vote" dbtype="tinyint" precision="1" phptype="integer"  null="false"/>
 
         <aggregate alias="Ideas" class="ideasPost" local="id" foreign="post_id" cardinality="many" owner="foreign"/>
         <aggregate alias="User" class="modUser" local="user_id" foreign="id" cardinality="one" owner="foreign"/>
