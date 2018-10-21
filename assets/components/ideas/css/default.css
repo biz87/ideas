@@ -66,9 +66,32 @@
     border:none;
 }
 
-.ideasTabs .ideasTab .ideasPost span{
+.ideasTabs .ideasTab .ideasPost > span{
     position: absolute;
     font-size: 12px;
     right: 20px;
     top: 0;
+}
+
+.ideasTabs .ideasTab .ideasPost .vote{
+
+}
+
+.ideasTabs .ideasTab .ideasPost .vote a{
+    display:inline-block;
+    margin-right:20px;
+    height:30px;
+    line-height:30px;
+    border-radius:5px;
+    padding:0 10px;
+    color:#fff;
+    cursor:pointer;
+}
+
+.ideasTabs .ideasTab .ideasPost .vote a[data-action="vote_for"]{
+    background:#0060CC;
+}
+
+.ideasTabs .ideasTab .ideasPost .vote a[data-action="vote_aganist"]{
+    background:red;
 }

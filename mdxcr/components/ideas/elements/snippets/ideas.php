@@ -47,21 +47,11 @@ if(count($types) > 0){
                         'class' => 'ideasType',
                         'on' => 'ideasPost.type = Type.id'
                     ),
-                    'Vote_for' => array(
-                        'class' => 'ideasVote',
-                        'on' => 'ideasPost.id = Vote_for.post_id AND Vote_for.vote = 1'
-                    ),
-                    'Vote_aganist' => array(
-                        'class' => 'ideasVote',
-                        'on' => 'ideasPost.id = Vote_aganist.post_id AND Vote_aganist.vote = -1'
-                    ),
                 ),
                 'select' => array(
-                    'ideasPost' => 'name, description',
+                    'ideasPost' => '*',
                     'Status' => 'Status.name as status_name',
-                    'Type' => 'Type.name as type_name, Type.id as type_id',
-                    'Vote_for' => 'Count(Vote_for.vote) as vote_for',
-                    'Vote_aganist' => 'Count(Vote_aganist.vote) as vote_aganist'
+                    'Type' => 'Type.name as type_name, Type.id as type_id'
                 ),
 
                 'limit' => 20

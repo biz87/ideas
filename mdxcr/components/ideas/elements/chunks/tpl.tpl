@@ -17,6 +17,11 @@
                                 <h3>{$post.name}</h3>
                                 <p>{$post.description}</p>
                                 <span>{$post.status_name}</span>
+
+                                <div class="vote">
+                                    <a data-post="{$post.id}" data-action="vote_for">Согласен <span class="vote_for">{$post.vote_for}</span></a>
+                                    <a data-post="{$post.id}" data-action="vote_aganist">Не согласен <span class="vote_againist" >{$post.vote_aganist}</span></a>
+                                </div>
                             </div>
                         {/foreach}
                     {else}
