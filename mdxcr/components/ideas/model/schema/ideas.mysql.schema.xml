@@ -76,6 +76,8 @@
     <object class="ideasVote" table="ideas_votes" extends="xPDOSimpleObject">
         <field key="post_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false"/>
         <field key="user_id" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false"/>
+        <field key="user_ses_id" dbtype="varchar" precision="30" phptype="string" null="false"/>
+        <field key="user_ip" dbtype="varchar" precision="15" phptype="string" null="false"/>
         <field key="vote" dbtype="tinyint" precision="1" phptype="integer"  null="false"/>
 
         <aggregate alias="Ideas" class="ideasPost" local="id" foreign="post_id" cardinality="many" owner="foreign"/>

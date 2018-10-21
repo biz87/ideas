@@ -5,7 +5,7 @@ return [
         'file' => 'ideas',
         'description' => '',
         'events' => [
-            'OnManagerPageInit' => [],
+            'onHandleRequest' => [],
         ],
     ],
 ];
