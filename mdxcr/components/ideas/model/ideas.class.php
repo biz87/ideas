@@ -31,4 +31,13 @@ class ideas
         $this->modx->lexicon->load('ideas:default');
     }
 
+
+    function vote($post_id = 0, $action = '')
+    {
+        $data = [];
+        $data['success'] = true;
+
+        return json_encode($data);
+    }
+
 }

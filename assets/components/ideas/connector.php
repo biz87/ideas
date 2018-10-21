@@ -13,14 +13,6 @@ require_once MODX_CONNECTORS_PATH . 'index.php';
 $ideas = $modx->getService('ideas', 'ideas', MODX_CORE_PATH . 'components/ideas/model/');
 $modx->lexicon->load('ideas:default');
 
-// handle request
-$corePath = $modx->getOption('ideas_core_path', null, $modx->getOption('core_path') . 'components/ideas/');
-$path = $modx->getOption('processorsPath', $ideas->config, $corePath . 'processors/');
-$modx->getRequest();
-
-/** @var modConnectorRequest $request */
-$request = $modx->request;
-$request->handleRequest([
-    'processors_path' => $path,
-    'location' => 'web/vote/vote',
-]);
+$response = $ideas->vote();
+echo $response;
+die();
