@@ -1,19 +1,25 @@
 <?php
-/** @noinspection PhpIncludeInspection */
-require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/config.core.php';
-/** @noinspection PhpIncludeInspection */
-require_once MODX_CORE_PATH . 'config/' . MODX_CONFIG_KEY . '.inc.php';
-/** @noinspection PhpIncludeInspection */
-require_once MODX_CONNECTORS_PATH . 'index.php';
+$isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
+if (empty($_REQUEST['action']) && !$isAjax) {
+    die('Access denied');
+}
 
-/** @var modX $modx */
+
+define('MODX_API_MODE', true);
+require_once($_SERVER['DOCUMENT_ROOT'].'/index.php');
+
+$modx = new modX();
+$modx->initialize('web');
+$modx->getService('error','error.modError', '', '');
+$modx->setLogLevel(modX::LOG_LEVEL_ERROR);
+$modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
+
 $ideas = $modx->getService('ideas', 'ideas', MODX_CORE_PATH . 'components/ideas/model/');
-$modx->lexicon->load('ideas:default');
+if (!$ideas) {
+    $modx->log(modX::LOG_LEVEL_ERROR, '[ideas] Could not load ideas class!');
+    return '';
+}
 
-$path = $modx->getOption('processorsPath', $ideas->config, MODX_CORE_PATH . 'components/ideas/processors/');
-/** @var modConnectorRequest $request */
-$request = $modx->request;
-$request->handleRequest(array(
-    'processors_path' => $path,
-    'location' => '',
-));
+$responce = $ideas->vote($_POST['action'], $_POST['post_id']);
+echo $responce;
+die();

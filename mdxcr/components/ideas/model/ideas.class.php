@@ -32,7 +32,7 @@ class ideas
     }
 
 
-    function vote($post_id = 0, $user_id = 0, $phpsessid = '', $action = '')
+    function vote($post_id = 0, $action = '')
     {
         if(empty($action)){
             $this->modx->log(modX::LOG_LEVEL_ERROR, '[ideas] empty action');
@@ -51,31 +51,31 @@ class ideas
 
         $this->log(1, print_r($_COOKIE, 1));
 
-
-        switch($action){
-            case 'vote_for':
-                $vote = $this->modx->newObject();
-                $vote->fromArray(array(
-                    'post_id' => intval($post_id),
-                    'user_id' => intval($user_id),
-                    'vote' => 1
-                ));
-                if($vote->save()){
-
-                }
-
-
-                break;
-            case 'vote_aganist':
-                $vote = $this->modx->newObject();
-                $vote->fromArray(array(
-                    'post_id' => intval($post_id),
-                    'user_id' => intval($user_id),
-                    'vote' => -1
-                ));
-                $vote->save();
-                break;
-        }
+//
+//        switch($action){
+//            case 'vote_for':
+//                $vote = $this->modx->newObject();
+//                $vote->fromArray(array(
+//                    'post_id' => intval($post_id),
+//                    'user_id' => intval($user_id),
+//                    'vote' => 1
+//                ));
+//                if($vote->save()){
+//
+//                }
+//
+//
+//                break;
+//            case 'vote_aganist':
+//                $vote = $this->modx->newObject();
+//                $vote->fromArray(array(
+//                    'post_id' => intval($post_id),
+//                    'user_id' => intval($user_id),
+//                    'vote' => -1
+//                ));
+//                $vote->save();
+//                break;
+//        }
 
 
         $data = [];
