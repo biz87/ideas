@@ -22,5 +22,5 @@ $modx->getRequest();
 $request = $modx->request;
 $request->handleRequest([
     'processors_path' => $path,
-    'location' => '',
+    'location' => 'web/vote/vote',
 ]);

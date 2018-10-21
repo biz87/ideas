@@ -19,3 +19,27 @@ $(document).on('click', '.ideasTabsNav a', function(e){
         }
     });
 });
+
+
+$(document).on('click', '.ideas_vote a', function(e){
+    e.preventDefault();
+
+    var post = $(this).closest('.ideasPost');
+    var action = $(this).data('action');
+    var post_id = $(this).data('post');
+
+    $.ajax({
+        type: "POST",
+        url: "/assets/components/ideas/connector.php",
+        data: {action:action,post_id:post_id},
+        success: function(data) {
+            console.log(data);
+            if(data.success === false){
+            }
+            if(data.success === true){
+
+            }
+        },
+        'dataType':'json'
+    });
+});

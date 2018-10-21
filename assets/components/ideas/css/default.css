@@ -77,7 +77,7 @@
 
 }
 
-.ideasTabs .ideasTab .ideasPost .vote a{
+.ideasTabs .ideasTab .ideasPost .ideas_vote a{
     display:inline-block;
     margin-right:20px;
     height:30px;
@@ -88,10 +88,10 @@
     cursor:pointer;
 }
 
-.ideasTabs .ideasTab .ideasPost .vote a[data-action="vote_for"]{
+.ideasTabs .ideasTab .ideasPost .ideas_vote a[data-action="vote_for"]{
     background:#0060CC;
 }
 
-.ideasTabs .ideasTab .ideasPost .vote a[data-action="vote_aganist"]{
+.ideasTabs .ideasTab .ideasPost .ideas_vote a[data-action="vote_aganist"]{
     background:red;
 }
