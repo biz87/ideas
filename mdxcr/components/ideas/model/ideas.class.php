@@ -57,32 +57,16 @@ class ideas
         if(!$vote){
             switch($action){
                 case 'vote_for':
-                    $vote = $this->modx->newObject('ideasVote');
-                    $vote->fromArray(array(
-                        'post_id' => intval($post_id),
-                        'user_id' => intval($user_id),
-                        'vote' => 1,
-                        'user_ip' => $user_ip,
-                        'user_ses_id' => $ses_id
-                    ));
-                    if($vote->save()){
+                    $response = $this->process_vote($post_id, $user_id, 1, $user_ip, $ses_id);
+                    if($response['success']){
                         $data = [];
                         $data['success'] = true;
                         return json_encode($data);
                     }
-
-
                     break;
                 case 'vote_aganist':
-                    $vote = $this->modx->newObject('ideasVote');
-                    $vote->fromArray(array(
-                        'post_id' => intval($post_id),
-                        'user_id' => intval($user_id),
-                        'vote' => -1,
-                        'user_ip' => $user_ip,
-                        'user_ses_id' => $ses_id
-                    ));
-                    if($vote->save()){
+                    $response = $this->process_vote($post_id, $user_id, -1, $user_ip, $ses_id);
+                    if($response['success']){
                         $data = [];
                         $data['success'] = true;
                         return json_encode($data);
@@ -95,6 +79,46 @@ class ideas
             return json_encode($data);
         }
 
+    }
+
+    function process_vote($post_id, $user_id, $vote, $user_ip, $ses_id)
+    {
+        //  Голосую
+        $voteObj = $this->modx->newObject('ideasVote');
+        $voteObj->fromArray(array(
+            'post_id' => intval($post_id),
+            'user_id' => intval($user_id),
+            'vote' => $vote,
+            'user_ip' => $user_ip,
+            'user_ses_id' => $ses_id
+        ));
+        if($voteObj->save()){
+            // Записываю количество  голосов в итоговую таблицу поста
+            $q = $this->modx->newQuery('ideasVote', array(
+                'post_id' => intval($post_id),
+                'vote' => $vote
+            ));
+            $q->select(array(
+                "count(*) as count"
+            ));
+            $s = $q->prepare();
+            $s->execute();
+            $rows = $s->fetchAll(PDO::FETCH_ASSOC);
+            $count = $rows[0]['count'];
+
+            $post = $this->modx->getObject('ideasPost', array('id' => $post_id));
+            if($post){
+                if($vote == 1){
+                    $post->set('vote_for', $count);
+                }else{
+                    $post->set('vote_aganist', $count);
+                }
+                $post->save();
+            }
+            $data = [];
+            $data['success'] = true;
+            return $data;
+        }
     }
 
 }
