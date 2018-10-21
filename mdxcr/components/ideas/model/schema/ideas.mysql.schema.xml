@@ -13,6 +13,10 @@
         <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
         <field key="type" dbtype="tinyint" precision="3" phptype="integer" attributes="unsigned" null="true"
                default="1"/>
+        <field key="vote_for" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="true"
+               default="0"/>
+        <field key="vote_aganist" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="true"
+               default="0"/>
 
         <index alias="name" name="name" primary="false" unique="false" type="BTREE">
             <column key="name" length="" collation="A" null="false"/>

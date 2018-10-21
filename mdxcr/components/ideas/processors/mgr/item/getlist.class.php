@@ -72,10 +72,7 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
         }else{
             $array['user'] = $this->modx->lexicon('ideas_items_user_anonimus');
         }
-
-
-        $array['vote_for'] = $this->modx->getCount('ideasVote', array('post_id' => $array['id'], 'vote' => 1));
-        $array['vote_aganist'] = $this->modx->getCount('ideasVote', array('post_id' => $array['id'], 'vote' => -1));
+        
 
         // Get Status data
         if(isset($array['status']) && $array['status'] > 0){
