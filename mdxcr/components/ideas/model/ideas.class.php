@@ -35,12 +35,12 @@ class ideas
     function vote($post_id = 0, $action = '')
     {
         if(empty($action)){
-            $this->modx->log(modX::LOG_LEVEL_ERROR, '[ideas] empty action');
+            $this->modx->log(modX::LOG_LEVEL_ERROR, '[ideas] vote empty action');
             return;
         }
 
         if(intval($post_id) == 0){
-            $this->modx->log(modX::LOG_LEVEL_ERROR, '[ideas] incorrect or empty post_id '.$post_id);
+            $this->modx->log(modX::LOG_LEVEL_ERROR, '[ideas] vore incorrect or empty post_id '.$post_id);
             return;
         }
 
@@ -60,6 +60,7 @@ class ideas
                     $response = $this->process_vote($post_id, $user_id, 1, $user_ip, $ses_id);
                     if($response['success']){
                         $data = [];
+                        $data['count'] = $response['count'];
                         $data['success'] = true;
                         return json_encode($data);
                     }
@@ -68,6 +69,7 @@ class ideas
                     $response = $this->process_vote($post_id, $user_id, -1, $user_ip, $ses_id);
                     if($response['success']){
                         $data = [];
+                        $data['count'] = $response['count'];
                         $data['success'] = true;
                         return json_encode($data);
                     }
@@ -93,7 +95,7 @@ class ideas
             'user_ses_id' => $ses_id
         ));
         if($voteObj->save()){
-            // Записываю количество  голосов в итоговую таблицу поста
+            // Записываю количество положительных голосов в итоговую таблицу поста
             $q = $this->modx->newQuery('ideasVote', array(
                 'post_id' => intval($post_id),
                 'vote' => $vote
@@ -116,6 +118,7 @@ class ideas
                 $post->save();
             }
             $data = [];
+            $data['count'] = $count;
             $data['success'] = true;
             return $data;
         }

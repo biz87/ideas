@@ -1,23 +1,35 @@
 <?php
 $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
-if (empty($_REQUEST['action']) && !$isAjax) {
+if (empty($_POST['action']) && !$isAjax) {
     die('Access denied');
 }
 
-define('MODX_API_MODE', true);
-require_once($_SERVER['DOCUMENT_ROOT'].'/index.php');
-
-$modx = new modX();
-$modx->initialize('web');
-$modx->getService('error','error.modError', '', '');
-$modx->setLogLevel(modX::LOG_LEVEL_ERROR);
+if (file_exists(dirname(dirname(dirname(dirname(__FILE__)))) . '/config.core.php')) {
+    /** @noinspection PhpIncludeInspection */
+    require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/config.core.php';
+} else {
+    require_once dirname(dirname(dirname(dirname(dirname(__FILE__))))) . '/config.core.php';
+}
+/** @noinspection PhpIncludeInspection */
+require_once MODX_CORE_PATH . 'config/' . MODX_CONFIG_KEY . '.inc.php';
+/** @noinspection PhpIncludeInspection */
+require_once MODX_CONNECTORS_PATH . 'index.php';
 
 $ideas = $modx->getService('ideas', 'ideas', MODX_CORE_PATH . 'components/ideas/model/');
 if (!$ideas) {
     $modx->log(modX::LOG_LEVEL_ERROR, '[ideas] Could not load ideas class!');
     return '';
 }
+$modx->lexicon->load('ideas:default');
 
-$response = $ideas->vote($_REQUEST['post_id'], $_REQUEST['action']);
-echo $response;
-die();
+// handle request
+$corePath = $modx->getOption('modextra_core_path', null, $modx->getOption('core_path') . 'components/ideas/');
+$path = $modx->getOption('processorsPath', $ideas->config, $corePath . 'processors/');
+$modx->getRequest();
+
+/** @var modConnectorRequest $request */
+$request = $modx->request;
+$request->handleRequest([
+    'processors_path' => $path,
+    'location' => '',
+]);

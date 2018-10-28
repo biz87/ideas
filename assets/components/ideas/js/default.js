@@ -31,12 +31,13 @@ $(document).on('click', '.ideas_vote a', function(e){
     $.ajax({
         type: "POST",
         url: "/assets/components/ideas/connector.php",
-        data: {action:action,post_id:post_id},
+        data: {vote_action:action,post_id:post_id},
         success: function(data) {
             console.log(data);
             if(data.success === false){
             }
             if(data.success === true){
+                post.find('[data-action="' + action + '"] span').text(data.count);
 
             }
         },
