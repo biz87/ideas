@@ -1,6 +1,6 @@
 <?php
 $isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
-if (empty($_REQUEST['action']) && !$isAjax) {
+if (empty($_POST['vote_action']) && !$isAjax) {
     die('Access denied');
 }
 
@@ -18,6 +18,6 @@ if (!$ideas) {
     return '';
 }
 
-$response = $ideas->vote($_REQUEST['post_id'], $_REQUEST['action']);
+$response = $ideas->vote($_POST['post_id'], $_POST['vote_action']);
 echo $response;
 die();
