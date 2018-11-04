@@ -35,11 +35,32 @@ $(document).on('click', '.ideas_vote a', function(e){
         success: function(data) {
             console.log(data);
             if(data.success === false){
+                var $type = 'error';
+                var $message = data.message;
+                var $icon = 'fa fa-exclamation-circle';
             }
             if(data.success === true){
                 post.find('[data-action="' + vote_action + '"] span').text(data.count);
-
+                var $type = 'success';
+                var $message = data.message;
+                var $icon = 'fa fa-check';
             }
+
+            toastOptions = {
+                class: 'iziToast-' + $type,
+                message: $message,
+                animateInside: false,
+                position: 'topRight',
+                progressBar: false,
+                icon: $icon,
+                timeout: 3200,
+                transitionIn: 'fadeInLeft',
+                transitionOut: 'fadeOut',
+                transitionInMobile: 'fadeIn',
+                transitionOutMobile: 'fadeOut',
+                theme:'dark'
+            };
+            iziToast.show(toastOptions);
         },
         'dataType':'json'
     });
@@ -60,7 +81,6 @@ $(document).on('click', '.new_idea_submit', function(e){
         url: "/assets/components/ideas/action.php",
         data: form.serialize(),
         success: function(data) {
-            console.log(data);
             if(data.success === false){
                 var $type = 'error';
                 var $message = data.message;
