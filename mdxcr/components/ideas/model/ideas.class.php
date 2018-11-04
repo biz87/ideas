@@ -31,7 +31,6 @@ class ideas
         $this->modx->lexicon->load('ideas:default');
 
         $this->pdo = $this->modx->getService('pdoTools');
-        $this->pdoFetch = $this->modx->getService('pdoFetch');
     }
 
 
@@ -190,17 +189,20 @@ class ideas
             'type' => $idea_type
         ));
         if($idea->save()){
+
             $emails = array_map('trim', explode(',',
                     $this->modx->getOption('ideas_manager_email', null, $this->modx->getOption('emailsender')))
             );
 
             $subject = 'Новая идея на сайте';
 
-            $body = '';
             $chunk = $this->modx->getOption('ideas_email_tpl', null, 'tpl.email.new.manager');
-            $pdo->getChunk($chunk, array('idea' => $idea->toArray()));
-
-
+            $ideaArr = $idea->toArray();
+            $type = $idea->getOne('Type');
+            $status = $idea->getOne('Status');
+            $ideaArr['type'] = $type->name;
+            $ideaArr['status'] = $status->name;
+            $body = $this->pdo->getChunk($chunk, array('idea' => $ideaArr));
             foreach ($emails as $email) {
                 if (preg_match('#.*?@.*#', $email)) {
                     $this->sendEmail($email, $subject, $body);
