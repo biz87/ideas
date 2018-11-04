@@ -30,7 +30,7 @@ $(document).on('click', '.ideas_vote a', function(e){
 
     $.ajax({
         type: "POST",
-        url: "/assets/components/ideas/connector.php",
+        url: "/assets/components/ideas/action.php",
         data: {vote_action:action,post_id:post_id},
         success: function(data) {
             console.log(data);
@@ -43,4 +43,9 @@ $(document).on('click', '.ideas_vote a', function(e){
         },
         'dataType':'json'
     });
+});
+
+
+$(document).on('focus', '.new_idea_form input', function(){
+    $(this).closest('form').find('div[hidden]').attr('hidden', false).prop('hidde', false);
 });

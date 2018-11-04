@@ -95,3 +95,42 @@
 .ideasTabs .ideasTab .ideasPost .ideas_vote a[data-action="vote_aganist"]{
     background:red;
 }
+
+.new_idea_form{
+    border-bottom: 1px solid;
+    padding: 0 20px 10px 20px;
+    margin-bottom: 10px;
+}
+
+.new_idea_form label{
+    display:block;
+    margin:20px 0;
+}
+
+.new_idea_form input,
+.new_idea_form textarea{
+    display:block;
+    width: 100%;
+    padding:5px 20px;
+    border-radius:2px;
+    box-shadow:none;
+}
+
+.new_idea_form small{
+    display:block;
+}
+
+.new_idea_form  button.new_idea_submit{
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 5px;
+    padding: 0 30px;
+    color: #fff;
+    cursor: pointer;
+    background:#000;
+}
+
+.new_idea_form textarea{
+    height:100px;
+}

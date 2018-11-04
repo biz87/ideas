@@ -11,6 +11,21 @@
         <div class="ideasTabs">
             {foreach $data as $type index=$index}
                 <div class="ideasTab {if $index == 0}active{/if}" data-tab="{$type.id}">
+                    <form method="POST" class="new_idea_form">
+                        <p>Добавьте вашу идею в раздел  <strong>{$type.name}</strong></p>
+                        <label>
+                            <input type="text" name="idea_title" placeholder="Ваша идея">
+                            <small>Заголовок должен быть кратким. Остальное пишите в описании</small>
+                        </label>
+                        <input type="hidden" name="idea_type" value="{$type.id}">
+                        <div hidden>
+                            <label>
+                                <textarea name="idea_description" placeholder="Подробное описание идеи"></textarea>
+                                <small>Подробное описание идеи (опционально)</small>
+                            </label>
+                            <button type="submit" class="new_idea_submit">Добавить идею</button>
+                        </div>
+                    </form>
                     {if $type.posts | count > 0}
                         {foreach $type.posts as $post}
                             <div class="ideasPost">
