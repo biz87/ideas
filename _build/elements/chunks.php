@@ -5,4 +5,8 @@ return [
         'file' => 'tpl',
         'description' => '',
     ],
+    'tpl.email.new.manager' => [
+        'file' => 'tpl',
+        'description' => '',
+    ],
 ];

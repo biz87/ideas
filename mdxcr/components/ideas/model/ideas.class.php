@@ -4,7 +4,8 @@ class ideas
 {
     /** @var modX $modx */
     public $modx;
-
+    public $pdo;
+    public $pdoFetch;
 
     /**
      * @param modX $modx
@@ -29,6 +30,9 @@ class ideas
 
         $this->modx->addPackage('ideas', $this->config['modelPath']);
         $this->modx->lexicon->load('ideas:default');
+
+        $this->pdo = $this->modx->getService('pdoTools');
+        $this->pdoFetch = $this->modx->getService('pdoFetch');
     }
 
 
@@ -187,6 +191,24 @@ class ideas
             'type' => $idea_type
         ));
         if($idea->save()){
+            $emails = array_map('trim', explode(',',
+                    $this->modx->getOption('ideas_manager_email', null, $this->modx->getOption('emailsender')))
+            );
+
+            $subject = 'Новая идея на сайте';
+            $body = '';
+
+
+            foreach ($emails as $email) {
+                if (preg_match('#.*?@.*#', $email)) {
+                    $this->sendEmail($email, $subject, $body);
+                }
+            }
+
+            // $this->pdo = $this->modx->getService('pdoTools');
+            // $this->pdoFetch = $this->modx->getService('pdoFetch');
+
+
             $data = [];
             $data['message'] = 'Идея записана';
             $data['success'] = true;
@@ -208,6 +230,25 @@ class ideas
         $str = str_replace("{", "&#123;", $str);
         $str = str_replace("}", "&#125;", $str);
         return $str;
+    }
+
+    public function sendEmail($email, $subject, $body = '')
+    {
+        /** @var modPHPMailer $mail */
+        $mail = $this->modx->getService('mail', 'mail.modPHPMailer');
+        $mail->setHTML(true);
+
+        $mail->address('to', trim($email));
+        $mail->set(modMail::MAIL_SUBJECT, trim($subject));
+        $mail->set(modMail::MAIL_BODY, $body);
+        $mail->set(modMail::MAIL_FROM, $this->modx->getOption('emailsender'));
+        $mail->set(modMail::MAIL_FROM_NAME, $this->modx->getOption('site_name'));
+        if (!$mail->send()) {
+            $this->modx->log(modX::LOG_LEVEL_ERROR,
+                'An error occurred while trying to send the email: ' . $mail->mailer->ErrorInfo
+            );
+        }
+        $mail->reset();
     }
 
 }
