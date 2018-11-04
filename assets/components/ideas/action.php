@@ -25,6 +25,12 @@ switch($action){
         $vote_action = trim( filter_input(INPUT_POST,'vote_action',  FILTER_SANITIZE_STRING) );
         $response = $ideas->vote($post_id, $vote_action);
         break;
+    case 'new_idea':
+        $idea_type = filter_input(INPUT_POST,'idea_type', FILTER_VALIDATE_INT);
+        $idea_title = trim( filter_input(INPUT_POST,'idea_title',  FILTER_SANITIZE_STRING) );
+        $idea_description = trim( filter_input(INPUT_POST,'idea_description',  FILTER_SANITIZE_STRING) );
+        $response = $ideas->add_idea($idea_type, $idea_title, $idea_description);
+        break;
 
 }
 

@@ -83,7 +83,7 @@ class ideas
 
     }
 
-    function process_vote($post_id, $user_id, $vote, $user_ip, $ses_id)
+    private function process_vote($post_id, $user_id, $vote, $user_ip, $ses_id)
     {
         //  Голосую
         $voteObj = $this->modx->newObject('ideasVote');
@@ -123,5 +123,67 @@ class ideas
             return $data;
         }
     }
+
+    function add_idea($idea_type = 0, $idea_title = '', $idea_description = '')
+    {
+        if($idea_type == 0){
+            $data = [];
+            $data['message'] = 'Не указан тип идеи';
+            $data['success'] = false;
+            return json_encode($data);
+        }
+
+        if(!empty($idea_title)){
+            $idea_title = $this->modx_tags($idea_title);
+        }else{
+            $data = [];
+            $data['message'] = 'Пустой заголовок идеи';
+            $data['success'] = false;
+            return json_encode($data);
+        }
+
+        if(!empty($idea_description)){
+            $idea_description = $this->modx_tags($idea_description);
+        }
+
+        $user_id = 0;
+
+
+        $idea = $this->modx->newObject('ideasPost');
+        $idea->fromArray(array(
+            'name' => $idea_title,
+            'description' => $idea_description,
+            'status' => 1,
+            'user_id' => $user_id,
+            'createdon' => time(),
+            'active' => 0,
+            'type' => $idea_type
+        ));
+        if($idea->save()){
+            $data = [];
+            $data['message'] = 'Идея записана';
+            $data['success'] = true;
+            return json_encode($data);
+        }else{
+            $data = [];
+            $data['message'] = 'Что-то пошло не так';
+            $data['success'] = false;
+            return json_encode($data);
+        }
+
+
+
+    }
+
+    private function modx_tags($str = ''){
+        $str = str_replace("[", "&#91;", $str);
+        $str = str_replace("]", "&#93;", $str);
+        $str = str_replace("{", "&#123;", $str);
+        $str = str_replace("}", "&#125;", $str);
+        return $str;
+    }
+
+
+
 
 }
