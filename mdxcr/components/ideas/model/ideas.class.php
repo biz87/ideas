@@ -5,7 +5,6 @@ class ideas
     /** @var modX $modx */
     public $modx;
     public $pdo;
-    public $pdoFetch;
 
     /**
      * @param modX $modx
@@ -196,7 +195,10 @@ class ideas
             );
 
             $subject = 'Новая идея на сайте';
+
             $body = '';
+            $chunk = $this->modx->getOption('ideas_email_tpl', null, 'tpl.email.new.manager');
+            $pdo->getChunk($chunk, array('idea' => $idea->toArray()));
 
 
             foreach ($emails as $email) {
@@ -205,8 +207,6 @@ class ideas
                 }
             }
 
-            // $this->pdo = $this->modx->getService('pdoTools');
-            // $this->pdoFetch = $this->modx->getService('pdoFetch');
 
 
             $data = [];

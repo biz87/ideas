@@ -31,5 +31,10 @@ return [
         'value' => '',
         'area' => 'ideas_main',
     ],
+    'email_tpl' => [
+        'xtype' => 'textfield',
+        'value' => 'tpl.email.new.manager',
+        'area' => 'ideas_main',
+    ],
 
 ];
