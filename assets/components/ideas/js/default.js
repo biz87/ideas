@@ -62,11 +62,32 @@ $(document).on('click', '.new_idea_submit', function(e){
         success: function(data) {
             console.log(data);
             if(data.success === false){
+                var $type = 'error';
+                var $message = data.message;
+                var $icon = 'fa fa-exclamation-circle';
             }
             if(data.success === true){
-
+                var $type = 'success';
+                var $message = data.message;
+                var $icon = 'fa fa-check';
 
             }
+
+            toastOptions = {
+                class: 'iziToast-' + $type,
+                message: $message,
+                animateInside: false,
+                position: 'topRight',
+                progressBar: false,
+                icon: $icon,
+                timeout: 3200,
+                transitionIn: 'fadeInLeft',
+                transitionOut: 'fadeOut',
+                transitionInMobile: 'fadeIn',
+                transitionOutMobile: 'fadeOut',
+                theme:'dark'
+            };
+            iziToast.show(toastOptions);
         },
         'dataType':'json'
     });
