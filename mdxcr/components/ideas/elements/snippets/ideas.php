@@ -11,8 +11,10 @@ if (!$ideas) {
 $allow_jquery_modal = $modx->getOption('ideas_allow_jquery_modal', null, true);
 if($allow_jquery_modal){
     $modx->regClientCSS(MODX_ASSETS_URL . 'components/ideas/css/jquery.modal.min.css');
+    $modx->regClientCSS(MODX_ASSETS_URL . 'components/ideas/css/iziToast.css');
     $modx->regClientCSS(MODX_ASSETS_URL . 'components/ideas/css/default.css');
     $modx->regClientScript(MODX_ASSETS_URL. 'components/ideas/js/jquery.modal.min.js');
+    $modx->regClientScript(MODX_ASSETS_URL. 'components/ideas/js/iziToast.min.js');
     $modx->regClientScript(MODX_ASSETS_URL. 'components/ideas/js/default.js');
 }
 
