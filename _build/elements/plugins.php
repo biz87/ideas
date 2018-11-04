@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'ideas' => [
-        'file' => 'ideas',
-        'description' => '',
-        'events' => [
-            'onHandleRequest' => [],
-        ],
-    ],
+//    'ideas' => [
+//        'file' => 'ideas',
+//        'description' => '',
+//        'events' => [
+//            'onHandleRequest' => [],
+//        ],
+//    ],
 ];
