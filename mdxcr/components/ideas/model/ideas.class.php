@@ -155,16 +155,35 @@ class ideas
         }
 
         $user_id = $this->modx->user->get('id');
+        $active = $this->modx->getOption('ideas_allow_published', null, 0);
+        $allow_anonimus = $this->modx->getOption('ideas_allow_new_ideas_anonimus', null, 0);
 
+        if($user_id == 0 && !$allow_anonimus){
+            $data = [];
+            $data['message'] = 'Новые идеи для анонимов запрещены';
+            $data['success'] = false;
+            return json_encode($data);
+        }
+        $status = $this->modx->getOption('ideas_first_status', null, '');
+        if(empty($status)){
+            $q = $this->modx->newQuery('ideasStatus');
+            $q->limit(1);
+            $q->sortby('rank');
+            $o = $this->modx->getObject('ideasStatus', $q);
+            if($o){
+                $status = $o->id;
+            }
+
+        }
 
         $idea = $this->modx->newObject('ideasPost');
         $idea->fromArray(array(
             'name' => $idea_title,
             'description' => $idea_description,
-            'status' => 1,
+            'status' => $status,
             'user_id' => $user_id,
             'createdon' => time(),
-            'active' => 0,
+            'active' => $active,
             'type' => $idea_type
         ));
         if($idea->save()){
