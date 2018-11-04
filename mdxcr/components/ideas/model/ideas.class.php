@@ -54,7 +54,14 @@ class ideas
             $vote = $this->modx->getObject('ideasVote', array('user_ip' => $user_ip, 'user_ses_id' => $ses_id, 'post_id' => $post_id));
         }
 
+        $allow_vote_anonimus = $this->modx->getOption('ideas_allow_vote_anonimus', null, false);
         if(!$vote){
+            if($user_id == 0 && !$allow_vote_anonimus){
+                $data = [];
+                $data['message'] = 'Анонимам голосовать запрещено';
+                $data['success'] = false;
+                return json_encode($data);
+            }
             switch($action){
                 case 'vote_for':
                     $response = $this->process_vote($post_id, $user_id, 1, $user_ip, $ses_id);
@@ -77,6 +84,7 @@ class ideas
             }
         }else{
             $data = [];
+            $data['message'] = 'Вы уже голосовали';
             $data['success'] = false;
             return json_encode($data);
         }
@@ -146,7 +154,7 @@ class ideas
             $idea_description = $this->modx_tags($idea_description);
         }
 
-        $user_id = 0;
+        $user_id = $this->modx->user->get('id');
 
 
         $idea = $this->modx->newObject('ideasPost');
@@ -182,8 +190,5 @@ class ideas
         $str = str_replace("}", "&#125;", $str);
         return $str;
     }
-
-
-
 
 }
