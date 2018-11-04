@@ -23,6 +23,7 @@
                                 <textarea name="idea_description" placeholder="Подробное описание идеи"></textarea>
                                 <small>Подробное описание идеи (опционально)</small>
                             </label>
+                            <input type="hidden" name="action" value="new_idea">
                             <button type="submit" class="new_idea_submit">Добавить идею</button>
                         </div>
                     </form>
