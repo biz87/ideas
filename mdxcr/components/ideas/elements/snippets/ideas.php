@@ -11,11 +11,22 @@ if (!$ideas) {
 $allow_jquery_modal = $modx->getOption('ideas_allow_jquery_modal', null, true);
 if($allow_jquery_modal){
     $modx->regClientCSS(MODX_ASSETS_URL . 'components/ideas/css/jquery.modal.min.css');
-    $modx->regClientCSS(MODX_ASSETS_URL . 'components/ideas/lib/iziToast.css');
-    $modx->regClientCSS(MODX_ASSETS_URL . 'components/ideas/css/default.css');
     $modx->regClientScript(MODX_ASSETS_URL. 'components/ideas/js/jquery.modal.min.js');
+
+    $modx->regClientCSS(MODX_ASSETS_URL . 'components/ideas/lib/iziToast.css');
     $modx->regClientScript(MODX_ASSETS_URL. 'components/ideas/lib/iziToast.min.js');
-    $modx->regClientScript(MODX_ASSETS_URL. 'components/ideas/js/default.js');
+
+}
+
+$js_frontend = $modx->getOption('ideas_frontend_js', null, '[[++assets_url]]components/ideas/js/default.js');
+if(!empty($js_frontend)){
+    $modx->regClientScript($js_frontend);
+}
+
+
+$css_frontend = $modx->getOption('ideas_frontend_css', null, '[[++assets_url]]components/ideas/css/default.css');
+if(!empty($css_frontend)){
+    $modx->regClientScript($css_frontend);
 }
 
 

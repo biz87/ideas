@@ -23,3 +23,9 @@ $_lang['setting_ideas_manager_email_desc'] = 'Куда прислать увед
 
 $_lang['setting_ideas_email_tpl'] = 'Шаблон письма администратору о новой идее';
 $_lang['setting_ideas_email_tpl_desc'] = 'Чанк email шаблона, который отправляется администратору';
+
+$_lang['setting_ideas_frontend_js'] = 'Путь к основному js файлу фронтэнда';
+$_lang['setting_ideas_frontend_js_desc'] = 'Вы можете переписать по своему основной js  файл или вообще оставить строку пустой';
+
+$_lang['setting_ideas_frontend_css'] = 'Путь к основному css файлу фронтэнда';
+$_lang['setting_ideas_frontend_css_desc'] = 'Вы можете переписать по своему основной css  файл или вообще оставить строку пустой';
