@@ -18,13 +18,13 @@ if($allow_jquery_modal){
 
 }
 
-$js_frontend = $modx->getOption('ideas_frontend_js', null, '[[++assets_url]]components/ideas/js/default.js');
+$js_frontend = $modx->getOption('ideas_frontend_js', null, MODX_ASSETS_URL.'components/ideas/js/default.js');
 if(!empty($js_frontend)){
     $modx->regClientScript($js_frontend);
 }
 
 
-$css_frontend = $modx->getOption('ideas_frontend_css', null, '[[++assets_url]]components/ideas/css/default.css');
+$css_frontend = $modx->getOption('ideas_frontend_css', null, MODX_ASSETS_URL.'components/ideas/css/default.css');
 if(!empty($css_frontend)){
     $modx->regClientScript($css_frontend);
 }
