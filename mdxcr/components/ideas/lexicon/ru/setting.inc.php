@@ -5,6 +5,9 @@ $_lang['area_ideas_main'] = 'Основные';
 $_lang['setting_ideas_allow_jquery_modal'] = 'Разрешить jquery modal';
 $_lang['setting_ideas_allow_jquery_modal_desc'] = 'Разрешить сниппету подключать библиотеку jquery modal для вызова модального окна';
 
+$_lang['setting_ideas_allow_iziToast'] = 'Разрешить iziToast';
+$_lang['setting_ideas_allow_iziToast_desc'] = 'Разрешить сниппету подключать библиотеку iziToast для показа красивых уведомлений';
+
 $_lang['setting_ideas_allow_vote_anonimus'] = 'Разрешить голосовать анонимам';
 $_lang['setting_ideas_allow_vote_anonimus_desc'] = 'По умолчанию разрешаем голосовать за идеи любым пользователям';
 

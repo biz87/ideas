@@ -6,6 +6,11 @@ return [
         'value' => true,
         'area' => 'ideas_main',
     ],
+    'allow_iziToast' => [
+        'xtype' => 'combo-boolean',
+        'value' => true,
+        'area' => 'ideas_main',
+    ],
     'frontend_js' => [
         'xtype' => 'textfield',
         'value' => MODX_ASSETS_URL.'components/ideas/js/default.js',
