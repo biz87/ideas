@@ -26,7 +26,7 @@ if(!empty($js_frontend)){
 
 $css_frontend = $modx->getOption('ideas_frontend_css', null, MODX_ASSETS_URL.'components/ideas/css/default.css');
 if(!empty($css_frontend)){
-    $modx->regClientScript($css_frontend);
+    $modx->regClientCSS($css_frontend);
 }
 
 
