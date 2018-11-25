@@ -3,35 +3,23 @@
 return [
     'ideas' => [
         'file' => 'ideas',
-        'description' => 'ideas snippet to list items',
+        'description' => '',
         'properties' => [
             'tpl' => [
                 'type' => 'textfield',
-                'value' => 'tpl.ideas.item',
+                'value' => 'tpl.ideas.tpl',
             ],
             'sortby' => [
                 'type' => 'textfield',
-                'value' => 'name',
+                'value' => 'createdon',
             ],
             'sortdir' => [
-                'type' => 'list',
-                'options' => [
-                    ['text' => 'ASC', 'value' => 'ASC'],
-                    ['text' => 'DESC', 'value' => 'DESC'],
-                ],
-                'value' => 'ASC',
+                'type' => 'textfield',
+                'value' => 'asc',
             ],
             'limit' => [
                 'type' => 'numberfield',
-                'value' => 10,
-            ],
-            'outputSeparator' => [
-                'type' => 'textfield',
-                'value' => "\n",
-            ],
-            'toPlaceholder' => [
-                'type' => 'combo-boolean',
-                'value' => false,
+                'value' => 20,
             ],
         ],
     ],

@@ -20,7 +20,6 @@ $_lang['setting_ideas_allow_new_ideas_anonimus_desc'] = 'По умолчанию
 $_lang['setting_ideas_allow_published'] = 'Публиковать идеи сразу без модерации';
 $_lang['setting_ideas_allow_published_desc'] = 'По умолчанию идея должна пройти предварительную модерацию';
 
-
 $_lang['setting_ideas_manager_email'] = 'Email администратора';
 $_lang['setting_ideas_manager_email_desc'] = 'Куда прислать уведомление о новой идее?  Можно несколько адресов, через запятую';
 
