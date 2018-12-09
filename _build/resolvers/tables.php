@@ -100,26 +100,7 @@ if ($transport->xpdo) {
             break;
 
         case xPDOTransport::ACTION_UNINSTALL:
-
-            $modelPath = $modx->getOption('ideas_core_path', null, $modx->getOption('core_path') . 'components/ideas/') . 'model/';
-            $modx->addPackage('ideas', $modelPath);
-            $manager = $modx->getManager();
-            $objects = array();
-            $schemaFile = MODX_CORE_PATH . 'components/ideas/model/schema/ideas.mysql.schema.xml';
-            if (is_file($schemaFile)) {
-                $schema = new SimpleXMLElement($schemaFile, 0, true);
-                if (isset($schema->object)) {
-                    foreach ($schema->object as $object) {
-                        $objects[] = (string)$object['class'];
-                    }
-                }
-                unset($schema);
-            } else {
-                $modx->log(modX::LOG_LEVEL_ERROR, 'Could not get classes from schema file.');
-            }
-            foreach ($objects as $tmp) {
-                $manager->removeObjectContainer($tmp);
-            }
+            $success= true;
             break;
     }
 }
