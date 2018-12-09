@@ -112,3 +112,24 @@ $(document).on('click', '.new_idea_submit', function(e){
         'dataType':'json'
     });
 });
+
+$(document).on('change', '.selectIdeasTabs', function(){
+    var tab_id = $(this).val();
+
+    $('.ideasTabsNav a').each(function(){
+        if($(this).data('tab') == tab_id){
+            $(this).addClass('active');
+        }else{
+            $(this).removeClass('active');
+        }
+    });
+
+    $('.ideasTab').each(function(){
+        if($(this).data('tab') == tab_id){
+            $(this).addClass('active');
+        }else{
+            $(this).removeClass('active');
+        }
+    });
+
+});
