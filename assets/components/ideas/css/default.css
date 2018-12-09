@@ -219,6 +219,10 @@
     display:none;
 }
 
+.IdeasSectionEmpty{
+    padding: 28px;
+}
+
 @media (max-width:767px){
     #ideasBtn{
         height: 30px;

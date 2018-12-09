@@ -53,7 +53,7 @@
                             </div>
                         {/foreach}
                     {else}
-                        <p>В разделе {$type.name} пока ничего нет</p>
+                        <p class="IdeasSectionEmpty">В разделе {$type.name} пока ничего нет</p>
                     {/if}
                 </div>
             {/foreach}
