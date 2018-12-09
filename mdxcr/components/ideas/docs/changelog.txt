@@ -1,5 +1,9 @@
 История Ideas
 
+1.1.1-beta - (09.12.2018)
+==============
+- Исправлена очистка таблиц при удалении пакета (Fixed cleaning of tables, when uninstall package)
+
 1.1.0-beta - (09.12.2018)
 ==============
 - Добавлен аккуратный дизайн виджета (add new fancy widget's theme)

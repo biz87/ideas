@@ -100,6 +100,10 @@ if ($transport->xpdo) {
             break;
 
         case xPDOTransport::ACTION_UNINSTALL:
+            $modx->removeCollection('ideasStatus', array());
+            $modx->removeCollection('ideasType', array());
+            $modx->removeCollection('ideasVote', array());
+            //$modx->removeCollection('ideasPost', array());
             break;
     }
 }
