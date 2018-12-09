@@ -100,9 +100,10 @@ if ($transport->xpdo) {
             break;
 
         case xPDOTransport::ACTION_UNINSTALL:
-//            DROP [TEMPORARY] TABLE [IF EXISTS]
-//    tbl_name [, tbl_name] ...
-//    [RESTRICT | CASCADE]
+            $sql = "DROP  TABLE {$modx->getTableName('ideasStatus')}";
+            $stmt = $modx->prepare($sql);
+            $stmt->execute();
+
            /* $modx->removeCollection('ideasStatus', array());
             $modx->removeCollection('ideasType', array());
             $modx->removeCollection('ideasVote', array());*/

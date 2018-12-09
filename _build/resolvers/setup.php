@@ -159,9 +159,6 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         break;
 
     case xPDOTransport::ACTION_UNINSTALL:
-        $modx->removeCollection('ideasStatus', array());
-        $modx->removeCollection('ideasType', array());
-        $modx->removeCollection('ideasVote', array());
         $success = true;
         break;
 }
