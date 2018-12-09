@@ -120,11 +120,6 @@ if ($transport->xpdo) {
             foreach ($objects as $tmp) {
                 $manager->removeObjectContainer($tmp);
             }
-
-           /* $modx->removeCollection('ideasStatus', array());
-            $modx->removeCollection('ideasType', array());
-            $modx->removeCollection('ideasVote', array());*/
-            //$modx->removeCollection('ideasPost', array());
             break;
     }
 }

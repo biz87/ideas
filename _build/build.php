@@ -615,9 +615,9 @@ class ideasPackage
         // Add resolvers into vehicle
         //$resolvers = scandir($this->config['resolvers']);
         $resolvers = array(
+            'tables.php',
             'setup.php',
             'symlinks.php',
-            'tables.php',
             'settings.php'
         );
 
