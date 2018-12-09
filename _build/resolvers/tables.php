@@ -100,9 +100,12 @@ if ($transport->xpdo) {
             break;
 
         case xPDOTransport::ACTION_UNINSTALL:
-            $modx->removeCollection('ideasStatus', array());
+//            DROP [TEMPORARY] TABLE [IF EXISTS]
+//    tbl_name [, tbl_name] ...
+//    [RESTRICT | CASCADE]
+           /* $modx->removeCollection('ideasStatus', array());
             $modx->removeCollection('ideasType', array());
-            $modx->removeCollection('ideasVote', array());
+            $modx->removeCollection('ideasVote', array());*/
             //$modx->removeCollection('ideasPost', array());
             break;
     }
