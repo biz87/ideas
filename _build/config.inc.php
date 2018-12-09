@@ -19,12 +19,8 @@ return [
     'update' => [
         'chunks' => false,
         'menus' => true,
-        'plugins' => true,
-        'resources' => false,
         'settings' => false,
         'snippets' => true,
-        'templates' => false,
-        'widgets' => false,
     ],
     // Which elements should be static by default
     'static' => [
