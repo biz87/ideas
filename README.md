@@ -1,34 +1,89 @@
-## Quick start
 
-* Install MODX Revolution
+#Идеи, вопросы, проблемы, предложения.
+Виджет обратной связи с возможностью голосования для MODX.  Своеобразный аналог сервиса reformal.ru.
 
-* Upload this package into the `Extras` directory in the root of site
+Виджет крепится сбоку, в виде кнопки
 
-* You need to rename it to `anyOtherName` your package, so enter into SSH console and run
-```
-php ~/www/Extras/ideas/rename_it.php anyOtherName
-```
-*path on your site may differs*
+<img src="https://file.modx.pro/files/4/d/e/4dedc3fa3987b965cc643d673774c4c6s.jpg">
 
-* Then install it on dev site
-```
-php ~/www/Extras/anyOtherName/_build/build.php
-``` 
+По клику - вызывается модальное окно
+<img src="https://file.modx.pro/files/f/7/7/f775750f2e2cef567e9fc55ab842396ds.jpg">
 
-## Settings
+Из "коробки" мы сразу получаем приятный, ненавязчивый дизайн, в том числе адаптивную версию. 
+<img src="https://file.modx.pro/files/a/d/3/ad3e443dc5c0b21189f5102d68218595s.jpg">
 
-See `_build/config.inc.php` for editable package options.
+Дизайн компонента - естественно можно отключить и подготовить свой собственный. 
 
-All resolvers and elements are in `_build` path. All files that begins not from `.` or `_` will be added automatically. 
 
-If you will add a new type of element, you will need to add the method with that name into `build.php` script as well.
+##Предлагаемая логика работы:
+1. Пользователь сайта - предлагает идею, задает вопрос или сообщает о проблеме в соответствующем окне.
 
-## Build and download
+2. Пост сохраняется в базе и получает статус <strong>на рассмотрении</strong>
 
-You can build package at any time by opening `http://dev.site.com/Extras/anyOtherName/_build/build.php`
+3. Администратор получает уведомление о новой записи, модерирует и публикует ее. При необходимости назначает соотвествующий статус, к примеру <strong>Запланировано</strong>
 
-If you want to download built package - just add `?download=1` to the address.
+4. Новые посетители сайта видят опубликованный пост и голосуют кнопками Согласен, Не Согласен. Таким образом мы получаем рейтинг постов и возможность сортировки по рейтингу. 
 
-## Example deploy settings
 
-[![](https://file.modx.pro/files/3/a/b/3ab2753b9e8b6c09a4ca0da819db37b6s.jpg)](https://file.modx.pro/files/3/a/b/3ab2753b9e8b6c09a4ca0da819db37b6.png) [![](https://file.modx.pro/files/c/1/a/c1afbb8988ab358a0b400cdcdb0391d4s.jpg)](https://file.modx.pro/files/c/1/a/c1afbb8988ab358a0b400cdcdb0391d4.png)
+
+##Основные возможности пакета "Идеи": 
+<ol>
+    <li>Три типа идей из коробки: <strong>Идеи, Вопросы, Проблемы.</strong>  Есть возможность изменения и добавления новых типов
+<a rel="fancybox" href="https://file.modx.pro/files/c/5/d/c5d3db20324b55f2f9390317d0b3ebce.png"><img src="https://file.modx.pro/files/c/5/d/c5d3db20324b55f2f9390317d0b3ebces.jpg" class="fancybox thumbnail"></a>
+</li>
+
+<li>Пять статусов для идей из коробки:  <strong>На рассмотрении, Запланировано, Отклонено, Выполнено, Делается </strong> Легко добавить свои статусы..
+<a rel="fancybox" href="https://file.modx.pro/files/d/c/1/dc171f7cf9ec3746b875de785080461f.png"><img src="https://file.modx.pro/files/d/c/1/dc171f7cf9ec3746b875de785080461fs.jpg" class="fancybox thumbnail"></a> </li>
+
+<li>Управление постами из админки, в том числе  добавление новых постов
+<a rel="fancybox" href="https://file.modx.pro/files/f/3/d/f3de6a641d93b19fea4c964ddc3e3483.png"><img src="https://file.modx.pro/files/f/3/d/f3de6a641d93b19fea4c964ddc3e3483s.jpg" class="fancybox thumbnail"></a>
+<a rel="fancybox" href="https://file.modx.pro/files/a/0/4/a046804374888b63cf877fb5aaaeb5a5.png"><img src="https://file.modx.pro/files/a/0/4/a046804374888b63cf877fb5aaaeb5a5s.jpg" class="fancybox thumbnail"></a></li>
+
+<li>Возможность предлагать идеи и голосовать анонимам (опция в системных настройках компонента)</li>
+</ol>
+
+
+##Параметры компонента
+<ol>
+    <li>Разрешить jquery modal - опция подключает библиотеку, для показа модального окна с компонентом. Также здесь подключается библиотека iziToast - всплывающие уведомления</li>
+
+<li>Разрешить iziToast - опция подключает библиотеку для показа красивых всплывающих уведомлений</li>
+
+<li>Разрешить предлагать идеи анонимам - по умолчанию нет</li>
+
+<li>Публиковать идеи сразу без модерации - по умолчанию нет</li>
+
+<li>Разрешить голосовать анонимам - по умолчанию да</li>
+
+<li>Шаблон письма администратору о новой идее - в комплекте приличный email шаблон</li>
+
+<li>Статус публикации новой идеи - По умолчанию На рассмотрении</li>
+
+<li>Путь к основному css файлу фронтэнда - можно указать свой css</li>
+
+<li>Путь к основному js файлу фронтэнда - можно указать свой js</li>
+
+<li>Email администратора -  для отправки уведомлений, по умолчанию emailsender </li>
+</ol>
+
+##Установка и использование
+В комплекте всего один сниппет и один чанк оформления. 
+
+Компонент по задумке работает в модальном окне.  Все необходимые библиотеки, скрипты и стили поставляются вместе с компонентом. И простой вызов сниппета на странице - выведет фиксированную кнопку и модальное окно по клику на эту кнопку. 
+
+После установки компонента вызовите сниппет ideas - больше ничего делать не нужно. 
+Сниппет работает на основе pdoTools и использует его классы.  Наличие данного компонента, как зависимости - обязательно! При установке компонента - наличие pdoTools будет проверено. В случае его отсутствия - он будет установлен автоматически. 
+
+###Параметры сниппета:
+<ul>
+    <li><strong>limit</strong> - Количество записей, по умолчанию 20</li>
+<li><strong>sortby</strong> - Сортировка. По умолчанию - по дате создания. Для сортировки доступны поля name, status, user_id, createdon, updatedon, type, vote_for, vote_aganist</li>
+<li><strong>sortdir</strong> - направление сортировки. По умолчанию - asc</li>
+<li><strong>tpl</strong> - шаблон оформления - по умолчанию tpl.ideas.tpl</li>
+</ul>
+
+
+В случае если вы хотите создать отдельные страницы по типам записей, статусам или пользователям - достаточно немного переписать исходный сниппет, добавив условие выборки.  Возможно такой функционал появится в следующих версиях.
+
+Вживую на виджет можно посмотреть здесь https://megawebs.kz/modx-ideas
+
