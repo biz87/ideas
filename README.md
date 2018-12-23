@@ -29,7 +29,7 @@
 ## Основные возможности пакета "Идеи": 
 <ol>
     <li>Три типа идей из коробки: <strong>Идеи, Вопросы, Проблемы.</strong>  Есть возможность изменения и добавления новых типов
-<img src="https://file.modx.pro/files/c/5/d/c5d3db20324b55f2f9390317d0b3ebce.png">
+<img src="https://file.modx.pro/files/c/5/d/c5d3db20324b55f2f9390317d0b3ebce.png"><br><br>
 </li>
 
 
