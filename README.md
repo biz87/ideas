@@ -32,15 +32,23 @@
 <img src="https://file.modx.pro/files/c/5/d/c5d3db20324b55f2f9390317d0b3ebce.png">
 </li>
 
+
+
 <li>Пять статусов для идей из коробки:  <strong>На рассмотрении, Запланировано, Отклонено, Выполнено, Делается </strong> 
 Легко добавить свои статусы.<br>
 <img src="https://file.modx.pro/files/d/c/1/dc171f7cf9ec3746b875de785080461f.png">
 </li>
 
+
+
 <li>Управление постами из админки, в том числе  добавление новых постов
-<img src="https://file.modx.pro/files/f/3/d/f3de6a641d93b19fea4c964ddc3e3483.png"><br>
+<img src="https://file.modx.pro/files/f/3/d/f3de6a641d93b19fea4c964ddc3e3483.png">
+
+
 <img src="https://file.modx.pro/files/a/0/4/a046804374888b63cf877fb5aaaeb5a5.png">
 </li>
+
+
 
 <li>Возможность предлагать идеи и голосовать анонимам (опция в системных настройках компонента)</li>
 </ol>
