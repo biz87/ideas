@@ -92,6 +92,20 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
             }
         }
 
+        //Get resource
+        if(!empty($array['resource_id']) && $array['resource_id'] > 0){
+            $resource = $this->modx->getObject('modResource', array('id'  => $array['resource_id']));
+            if($resource){
+                $array['resource'] = $resource->pagetitle;
+            }else{
+                $array['resource'] = 'Ресурс не назначен';
+                $array['resource_id'] = 0;
+            }
+        }else{
+            $array['resource'] = 'Ресурс не назначен';
+            $array['resource_id'] = 0;
+        }
+
 
 
         $array['actions'] = [];

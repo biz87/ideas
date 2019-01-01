@@ -27,6 +27,8 @@ $_lang['ideas_items_remove_confirm'] = 'Вы уверены, что хотите
 $_lang['ideas_item_active'] = 'Включено';
 $_lang['ideas_item_vote_for'] = 'За';
 $_lang['ideas_item_vote_aganist'] = 'Против';
+$_lang['ideas_item_resource_id'] = 'Ресурс';
+
 
 $_lang['ideas_item_err_name'] = 'Вы должны указать имя поста.';
 $_lang['ideas_item_err_ae'] = 'пост с таким именем уже существует.';

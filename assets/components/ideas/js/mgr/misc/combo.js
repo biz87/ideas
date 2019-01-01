@@ -112,3 +112,25 @@ ideas.combo.Status = function (config) {
 Ext.extend(ideas.combo.Status,MODx.combo.ComboBox);
 Ext.reg('ideas-combo-status',ideas.combo.Status);
 
+
+ideas.combo.Resource = function (config) {
+    config = config || {};
+
+    Ext.applyIf(config,{
+        name: 'resource_id'
+        ,hiddenName: 'resource_id'
+        ,displayField: 'pagetitle'
+        ,valueField: 'id'
+        ,fields: ['pagetitle','id']
+        ,pageSize: 10
+        ,url: MODx.config.connector_url
+        ,baseParams: {
+            action: 'resource/getlist',
+            combo: true,
+        }
+    });
+    ideas.combo.Resource.superclass.constructor.call(this,config);
+};
+Ext.extend(ideas.combo.Resource,MODx.combo.ComboBox);
+Ext.reg('ideas-combo-resource',ideas.combo.Resource);
+
