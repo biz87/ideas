@@ -21,6 +21,10 @@ return [
                 'type' => 'numberfield',
                 'value' => 20,
             ],
+            'resource_id' => [
+                'type' => 'numberfield',
+                'value' => 0,
+            ],
         ],
     ],
 ];

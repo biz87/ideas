@@ -33,6 +33,7 @@ $limit = $modx->getOption('limit', $scriptProperties, 20);
 $sortby = $modx->getOption('sortby', $scriptProperties, 'createdon');
 $sortdir = $modx->getOption('sortdir', $scriptProperties, 'asc');
 $tpl = $modx->getOption('tpl', $scriptProperties, 'tpl.ideas.tpl');
+$resource = $modx->getOption('resource_id', $scriptProperties, false);
 
 
 $pdoFetch = $modx->getService('pdoFetch');
@@ -47,11 +48,20 @@ $types = $pdoFetch->getCollection(
     )
 );
 
+
+
 if(count($types) > 0){
     foreach($types as $key => $type){
+        $postFilter = array();
+        $postFilter['active'] = 1;
+        $postFilter['type'] = $type['id'];
+        if($resource){
+            $postFilter['resource_id'] = $resource;
+        }
+
         $types[$key]['posts'] = $pdoFetch->getCollection(
             'ideasPost',
-            array('active' => 1, 'type' => $type['id']),
+            $postFilter, //where array
             array(
                 'sortby' => $sortby,
                 'sortdir' => $sortdir,
