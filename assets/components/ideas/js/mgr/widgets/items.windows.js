@@ -56,21 +56,14 @@ Ext.extend(ideas.window.CreateItem, MODx.Window, {
             id: config.id + '-user_id',
             anchor: '99%',
             allowBlank: false,
-        },
-        //     {
-        //     xtype: 'numberfield',
-        //     fieldLabel: _('ideas_item_vote_for'),
-        //     name: 'vote_for',
-        //     id: config.id + '-vote_for',
-        //     anchor: '99%',
-        // }, {
-        //     xtype: 'numberfield',
-        //     fieldLabel: _('ideas_item_vote_aganist'),
-        //     name: 'vote_aganist',
-        //     id: config.id + '-vote_aganist',
-        //     anchor: '99%',
-        // },
-            {
+        },{
+            xtype: 'ideas-combo-resource',
+            fieldLabel: _('ideas_item_resource_id'),
+            name: 'resoruce_id',
+            id: config.id + '-resource_id',
+            anchor: '99%',
+            allowBlank: false,
+        }, {
             xtype: 'xcheckbox',
             boxLabel: _('ideas_item_active'),
             name: 'active',
@@ -149,6 +142,13 @@ Ext.extend(ideas.window.UpdateItem, MODx.Window, {
             anchor: '99%',
             allowBlank: false,
         }, {
+            xtype: 'ideas-combo-resource',
+            fieldLabel: _('ideas_item_resource_id'),
+            name: 'resoruce_id',
+            id: config.id + '-resource_id',
+            anchor: '99%',
+            allowBlank: false,
+        },{
             xtype: 'xcheckbox',
             boxLabel: _('ideas_item_active'),
             name: 'active',
