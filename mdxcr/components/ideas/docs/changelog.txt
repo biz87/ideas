@@ -1,4 +1,10 @@
 История Ideas
+
+1.2.1-beta - (01.01.2019)
+==============
+- Исправлена ошибка с пустым ответом при голосовании (Fix error with empty response when vote)
+
+
 1.2.0-beta - (01.01.2019)
 ==============
 - Добавлена возможность привязки идей к определенным страницам. (Added the ability to link ideas to specific pages.)

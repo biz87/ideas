@@ -70,6 +70,7 @@ class ideas
                     if($response['success']){
                         $data = [];
                         $data['count'] = $response['count'];
+                        $data['message'] = 'Ваш голос учтен';
                         $data['success'] = true;
                         return json_encode($data);
                     }
@@ -79,6 +80,7 @@ class ideas
                     if($response['success']){
                         $data = [];
                         $data['count'] = $response['count'];
+                        $data['message'] = 'Ваш голос учтен';
                         $data['success'] = true;
                         return json_encode($data);
                     }

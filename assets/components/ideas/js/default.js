@@ -33,18 +33,21 @@ $(document).on('click', '.ideas_vote a', function(e){
         url: "/assets/components/ideas/action.php",
         data: {action:'vote',vote_action:vote_action,post_id:post_id},
         success: function(data) {
-            console.log(data);
+            var $type;
+            var $message;
+            var $icon;
+
             if(data.success === false){
-                var $type = 'error';
-                var $message = data.message;
-                var $icon = 'fa fa-exclamation-circle';
+                $type = 'error';
+                $message = data.message;
+                $icon = 'fa fa-exclamation-circle';
             }
             if(data.success === true){
-                post.find('[data-action="' + vote_action + '"] span').text(data.count);
-                var $type = 'success';
-                var $message = data.message;
-                var $icon = 'fa fa-check';
+                $type = 'success';
+                $message = data.message;
+                $icon = 'fa fa-check';
             }
+
 
             toastOptions = {
                 class: 'iziToast-' + $type,
