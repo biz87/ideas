@@ -81,16 +81,19 @@ $(document).on('click', '.new_idea_submit', function(e){
         url: "/assets/components/ideas/action.php",
         data: form.serialize(),
         success: function(data) {
+            var $type;
+            var $message;
+            var $icon;
+
             if(data.success === false){
-                var $type = 'error';
-                var $message = data.message;
-                var $icon = 'fa fa-exclamation-circle';
+                $type = 'error';
+                $message = data.message;
+                $icon = 'fa fa-exclamation-circle';
             }
             if(data.success === true){
-                var $type = 'success';
-                var $message = data.message;
-                var $icon = 'fa fa-check';
-
+                $type = 'success';
+                $message = data.message;
+                $icon = 'fa fa-check';
             }
 
             toastOptions = {

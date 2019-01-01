@@ -1,4 +1,4 @@
-<a href="#ideas" id="ideasBtn" rel="modal:open">Идеи</a></p>
+<a href="#ideas" id="ideasBtn" rel="modal:open">Идеи и предложения</a></p>
 
 
 <div id="ideas" class="modal">
