@@ -211,6 +211,9 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
             dataIndex: 'user',
             sortable: true,
             width: 150,
+            renderer: function(val, cell, row) {
+                return userLink(val, row.data['user_id'], true);
+            }
         },{
             header: _('ideas_item_vote_for'),
             dataIndex: 'vote_for',
@@ -305,3 +308,21 @@ Ext.extend(ideas.grid.Items, MODx.grid.Grid, {
     },
 });
 Ext.reg('ideas-grid-items', ideas.grid.Items);
+
+
+userLink = function (value, id, blank) {
+    if (!value) {
+        return '';
+    }
+    else if (!id) {
+        return value;
+    }
+
+    return String.format(
+        '<a href="?a=security/user/update&id={0}"  target="{1}">{2}</a>',
+        id,
+        (blank ? '_blank' : '_self'),
+        value
+    );
+};
+
