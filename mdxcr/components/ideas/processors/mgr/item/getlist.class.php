@@ -71,6 +71,8 @@ class ideasItemGetListProcessor extends modObjectGetListProcessor
 
         }else{
             $array['user'] = $this->modx->lexicon('ideas_items_user_anonimus');
+            $array['username'] = $this->modx->lexicon('ideas_items_user_anonimus');
+            $array['email'] = $this->modx->lexicon('ideas_items_user_anonimus');
         }
         
 

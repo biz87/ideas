@@ -104,7 +104,7 @@ Ext.extend(ideas.grid.Votes, MODx.grid.Grid, {
             dataIndex: 'actions',
             renderer: ideas.utils.renderActions,
             sortable: false,
-            width: 100,
+            width: 50,
             id: 'actions'
         }];
     },
@@ -123,6 +123,28 @@ Ext.extend(ideas.grid.Votes, MODx.grid.Grid, {
                 action: 'mgr/item/getlist',
                 combo: true,
                 rules: true
+            }
+        },{
+            xtype: 'ideas-combo-user'
+            ,id: 'tbar-ideas-combo-users'
+            ,width: 200
+            ,addall: true
+            ,emptyText: _('ideas_filter_user')
+            ,listeners: {
+                select: {fn: this.filterByPost, scope:this}
+            }
+            ,url: ideas.config.connector_url
+            ,baseParams: {
+                action: 'mgr/item/getlist',
+                combo: true,
+                rules: true
+            }
+        },{
+            xtype: 'button'
+            ,id: 'ideas-filters-clearres'
+            ,text: '<i class="icon icon-times"></i>'
+            ,listeners: {
+                click: {fn: this.clearFilter, scope: this}
             }
         }, '->', {
             xtype: 'ideas-field-search',
@@ -153,6 +175,7 @@ Ext.extend(ideas.grid.Votes, MODx.grid.Grid, {
         var s = this.getStore();
         s.baseParams['page'] = '';
         Ext.getCmp('tbar-ideas-combo-posts').setValue('');
+        Ext.getCmp('tbar-ideas-combo-users').setValue('');
         this.getBottomToolbar().changePage(1);
         this.refresh();
     },

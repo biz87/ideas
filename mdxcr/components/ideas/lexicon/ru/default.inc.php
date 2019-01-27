@@ -112,3 +112,7 @@ $_lang['ideas_vote_remove_confirm'] = 'Вы уверены, что хотите 
 $_lang['ideas_votes_remove_confirm'] = 'Вы уверены, что хотите удалить эти голоса?';
 
 $_lang['ideas_vote_err_remove'] = 'Ошибка при удалении голоса.';
+
+
+$_lang['ideas_filter_user'] = 'Выберите пользователя';
+$_lang['ideas_filter_posts'] = 'Выберите пост';

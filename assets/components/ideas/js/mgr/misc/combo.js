@@ -52,7 +52,7 @@ ideas.combo.User = function(config) {
     Ext.applyIf(config,{
         name: 'user_id'
         ,hiddenName: 'user_id'
-        ,displayField: 'email'
+        ,displayField: 'username'
         ,valueField: 'id'
         ,fields: ['email', 'username','id']
         ,pageSize: 20
