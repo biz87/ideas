@@ -134,3 +134,26 @@ ideas.combo.Resource = function (config) {
 Ext.extend(ideas.combo.Resource,MODx.combo.ComboBox);
 Ext.reg('ideas-combo-resource',ideas.combo.Resource);
 
+ideas.combo.Posts = function (config) {
+    config = config || {};
+    Ext.applyIf(config, {
+        name: 'name',
+        hiddenName: 'name',
+        displayField: 'name',
+        valueField: 'id',
+        editable: true,
+        fields: ['id', 'name'],
+        pageSize: 20,
+        emptyText: 'Выберите пост',
+        hideMode: 'offsets',
+        url: ideas.config.connector_url,
+        baseParams: {
+            action: 'mgr/item/getlist',
+            combo: true
+        }
+    });
+    ideas.combo.Posts.superclass.constructor.call(this, config);
+};
+Ext.extend(ideas.combo.Posts, MODx.combo.ComboBox);
+Ext.reg('ideas-combo-posts', ideas.combo.Posts);
+

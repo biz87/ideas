@@ -111,9 +111,19 @@ Ext.extend(ideas.grid.Votes, MODx.grid.Grid, {
 
     getTopBar: function () {
         return [{
-            text: '<i class="icon icon-plus"></i>&nbsp;' + _('ideas_type_create'),
-            handler: this.createType,
-            scope: this
+            xtype: 'ideas-combo-posts'
+            ,id: 'tbar-ideas-combo-posts'
+            ,width: 200
+            ,addall: true
+            ,emptyText: _('ideas_filter_posts')
+            ,listeners: {
+                select: {fn: this.filterByPost, scope:this}
+            }
+            ,baseParams: {
+                action: 'mgr/item/getlist',
+                combo: true,
+                rules: true
+            }
         }, '->', {
             xtype: 'ideas-field-search',
             width: 250,
@@ -132,6 +142,21 @@ Ext.extend(ideas.grid.Votes, MODx.grid.Grid, {
             }
         }];
     },
+
+    filterByPost: function(cb) {
+        this.getStore().baseParams['page'] = cb.value;
+        this.getBottomToolbar().changePage(1);
+        this.refresh();
+    },
+
+    clearFilter: function(btn,e) {
+        var s = this.getStore();
+        s.baseParams['page'] = '';
+        Ext.getCmp('tbar-ideas-combo-posts').setValue('');
+        this.getBottomToolbar().changePage(1);
+        this.refresh();
+    },
+
 
     onClick: function (e) {
         var elem = e.getTarget();
@@ -175,5 +200,7 @@ Ext.extend(ideas.grid.Votes, MODx.grid.Grid, {
         this.getStore().baseParams.query = '';
         this.getBottomToolbar().changePage(1);
     },
+
+
 });
 Ext.reg('ideas-grid-votes', ideas.grid.Votes);
