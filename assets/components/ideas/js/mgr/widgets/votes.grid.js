@@ -111,7 +111,7 @@ Ext.extend(ideas.grid.Votes, MODx.grid.Grid, {
 
     getTopBar: function () {
         return [{
-            xtype: 'ideas-combo-posts'
+            xtype: 'ideas-combo-votedposts'
             ,id: 'tbar-ideas-combo-posts'
             ,width: 200
             ,addall: true
@@ -119,25 +119,14 @@ Ext.extend(ideas.grid.Votes, MODx.grid.Grid, {
             ,listeners: {
                 select: {fn: this.filterByPost, scope:this}
             }
-            ,baseParams: {
-                action: 'mgr/item/getlist',
-                combo: true,
-                rules: true
-            }
         },{
-            xtype: 'ideas-combo-user'
+            xtype: 'ideas-combo-votedusers'
             ,id: 'tbar-ideas-combo-users'
             ,width: 200
             ,addall: true
             ,emptyText: _('ideas_filter_user')
             ,listeners: {
-                select: {fn: this.filterByPost, scope:this}
-            }
-            ,url: ideas.config.connector_url
-            ,baseParams: {
-                action: 'mgr/item/getlist',
-                combo: true,
-                rules: true
+                select: {fn: this.filterByUser, scope:this}
             }
         },{
             xtype: 'button'
@@ -146,34 +135,43 @@ Ext.extend(ideas.grid.Votes, MODx.grid.Grid, {
             ,listeners: {
                 click: {fn: this.clearFilter, scope: this}
             }
-        }, '->', {
-            xtype: 'ideas-field-search',
-            width: 250,
-            listeners: {
-                search: {
-                    fn: function (field) {
-                        this._doSearch(field);
-                    }, scope: this
-                },
-                clear: {
-                    fn: function (field) {
-                        field.setValue('');
-                        this._clearSearch();
-                    }, scope: this
-                },
-            }
-        }];
+        },
+            // '->', {
+            //     xtype: 'ideas-field-search',
+            //     width: 250,
+            //     listeners: {
+            //         search: {
+            //             fn: function (field) {
+            //                 this._doSearch(field);
+            //             }, scope: this
+            //         },
+            //         clear: {
+            //             fn: function (field) {
+            //                 field.setValue('');
+            //                 this._clearSearch();
+            //             }, scope: this
+            //         },
+            //     }
+            // }
+        ];
     },
 
     filterByPost: function(cb) {
-        this.getStore().baseParams['page'] = cb.value;
+        this.getStore().baseParams['post_id'] = cb.value;
+        this.getBottomToolbar().changePage(1);
+        this.refresh();
+    },
+
+    filterByUser: function(cb) {
+        this.getStore().baseParams['user_id'] = cb.value;
         this.getBottomToolbar().changePage(1);
         this.refresh();
     },
 
     clearFilter: function(btn,e) {
         var s = this.getStore();
-        s.baseParams['page'] = '';
+        s.baseParams['post_id'] = '';
+        s.baseParams['user_id'] = '';
         Ext.getCmp('tbar-ideas-combo-posts').setValue('');
         Ext.getCmp('tbar-ideas-combo-users').setValue('');
         this.getBottomToolbar().changePage(1);

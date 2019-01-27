@@ -32,20 +32,15 @@ class ideasVoteGetListProcessor extends modObjectGetListProcessor
      */
     public function prepareQueryBeforeCount(xPDOQuery $c)
     {
-//        if ($this->getProperty('combo')) {
-//            $c->select('id,user_id,vote');
-//            $c->where(array('post_id' => 1));
-//        }else{
-//            $query = trim($this->getProperty('query'));
-//            if ($query) {
-//                $c->where([
-//                    'name:LIKE' => "%{$query}%",
-//                    'OR:description:LIKE' => "%{$query}%",
-//                ]);
-//            }
-//
-//        }
+        //$this->modx->log(1, print_r($this->getProperties(), 1));
 
+        if($this->getProperty('user_id')){
+            $c->where(['user_id' => $this->getProperty('user_id')]);
+        }
+
+        if($this->getProperty('post_id')){
+            $c->where(['post_id' => $this->getProperty('post_id')]);
+        }
 
         return $c;
     }
@@ -59,67 +54,97 @@ class ideasVoteGetListProcessor extends modObjectGetListProcessor
      */
     public function prepareRow(xPDOObject $object)
     {
-        $array = $object->toArray();
-
-        // Get user data
-        if(isset($array['user_id']) && $array['user_id'] > 0){
-            $userProfile = $object->getOne('UserProfile');
-
-            if($userProfile){
-                if(!empty($userProfile->get('fullname'))){
-                    $array['user'] = $userProfile->get('fullname');
+        if ($this->getProperty('combo')) {
+            if($this->getProperty('userlist')){
+                $user = $this->modx->getObject('modUser', array('id' => $object->get('user_id')));
+                if($user){
+                    $array = array(
+                        'id' => $object->get('user_id'),
+                        'username' => "({$object->get('user_id')}) ".$user->get('username'),
+                    );
                 }else{
-                    $user = $object->getOne('User');
-                    $array['user'] = $user->get('username');
+                    $array = array(
+                        'id' => 0,
+                        'username' => $this->modx->lexicon('ideas_items_user_anonimus'),
+                    );
                 }
-            }else{
-                $array['user'] = '';
             }
 
+            if($this->getProperty('postlist')){
+                $post = $object->getOne('Post');
+                if($post){
+                    $array = array(
+                        'id' => $object->get('post_id'),
+                        'post' => $post->get('name'),
+                    );
+                }
+            }
+        } else {
+            $array = $object->toArray();
 
-        }else{
-            $array['user'] = $this->modx->lexicon('ideas_items_user_anonimus');
-        }
+            // Get user data
+            if(isset($array['user_id']) && $array['user_id'] > 0){
+                $userProfile = $object->getOne('UserProfile');
 
-        //Get post
-        if(!empty($array['post_id']) && $array['post_id'] > 0){
-            $post = $this->modx->getObject('ideasPost', array('id' => $array['post_id']));
-            if($post){
-                $array['post'] = $post->name;
+                if($userProfile){
+                    if(!empty($userProfile->get('fullname'))){
+                        $array['user'] = $userProfile->get('fullname');
+                    }else{
+                        $user = $object->getOne('User');
+                        $array['user'] = $user->get('username');
+                    }
+                }else{
+                    $array['user'] = '';
+                }
+
+
+            }else{
+                $array['user'] = $this->modx->lexicon('ideas_items_user_anonimus');
+            }
+
+            //Get post
+            if(!empty($array['post_id']) && $array['post_id'] > 0){
+                $post = $this->modx->getObject('ideasPost', array('id' => $array['post_id']));
+                if($post){
+                    $array['post'] = $post->name;
+                }else{
+                    $array['post'] = '';
+                }
             }else{
                 $array['post'] = '';
             }
-        }else{
-            $array['post'] = '';
-        }
 
-        //Get vote
-        if(!empty($array['vote'])){
-            if($array['vote'] == 1){
-                $array['vote'] = 'за';
+            //Get vote
+            if(!empty($array['vote'])){
+                if($array['vote'] == 1){
+                    $array['vote'] = 'за';
+                }
+                if($array['vote'] == -1){
+                    $array['vote'] = 'против';
+                }
+            }else{
+                $array['vote'] = '';
             }
-            if($array['vote'] == -1){
-                $array['vote'] = 'против';
-            }
-        }else{
-            $array['vote'] = '';
+
+
+            $array['actions'] = [];
+
+            // Remove
+            $array['actions'][] = [
+                'cls' => '',
+                'icon' => 'icon icon-trash-o action-red',
+                'title' => $this->modx->lexicon('ideas_vote_remove'),
+                'multiple' => $this->modx->lexicon('ideas_votes_remove'),
+                'action' => 'removeVote',
+                'button' => true,
+                'menu' => true,
+            ];
+
+
         }
-
-
-        $array['actions'] = [];
-
-        // Remove
-        $array['actions'][] = [
-            'cls' => '',
-            'icon' => 'icon icon-trash-o action-red',
-            'title' => $this->modx->lexicon('ideas_vote_remove'),
-            'multiple' => $this->modx->lexicon('ideas_votes_remove'),
-            'action' => 'removeVote',
-            'button' => true,
-            'menu' => true,
-        ];
-
         return $array;
+
+
     }
 
 }

@@ -157,3 +157,55 @@ ideas.combo.Posts = function (config) {
 Ext.extend(ideas.combo.Posts, MODx.combo.ComboBox);
 Ext.reg('ideas-combo-posts', ideas.combo.Posts);
 
+
+ideas.combo.VotedUsers = function (config) {
+    config = config || {};
+    Ext.applyIf(config, {
+        name: 'user_id',
+        hiddenName: 'id',
+        displayField: 'username',
+        valueField: 'id',
+        editable: true,
+        fields: ['id', 'username'],
+        pageSize: 20,
+        emptyText: _('seofilter_combo_select'),
+        allowBlank: false,
+        url: ideas.config.connector_url,
+        baseParams: {
+            action: 'mgr/vote/getlist',
+            combo: true,
+            userlist: true,
+            id: config.value
+        },
+    });
+    ideas.combo.VotedUsers.superclass.constructor.call(this, config);
+};
+Ext.extend(ideas.combo.VotedUsers, MODx.combo.ComboBox);
+Ext.reg('ideas-combo-votedusers', ideas.combo.VotedUsers);
+
+ideas.combo.VotedPosts = function (config) {
+    config = config || {};
+    Ext.applyIf(config, {
+        name: 'post',
+        hiddenName: 'id',
+        displayField: 'post',
+        valueField: 'id',
+        editable: true,
+        fields: ['id', 'post'],
+        pageSize: 20,
+        emptyText: _('seofilter_combo_select'),
+        allowBlank: false,
+        url: ideas.config.connector_url,
+        baseParams: {
+            action: 'mgr/vote/getlist',
+            combo: true,
+            postlist: true,
+            id: config.value
+        },
+    });
+    ideas.combo.VotedPosts.superclass.constructor.call(this, config);
+};
+Ext.extend(ideas.combo.VotedPosts, MODx.combo.ComboBox);
+Ext.reg('ideas-combo-votedposts', ideas.combo.VotedPosts);
+
+
