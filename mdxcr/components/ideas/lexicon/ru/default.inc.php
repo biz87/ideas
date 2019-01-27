@@ -97,3 +97,18 @@ $_lang['ideas_type_err_nf'] = 'Тип не найден.';
 $_lang['ideas_type_err_ns'] = 'Тип не указан.';
 $_lang['ideas_type_err_remove'] = 'Ошибка при удалении типа.';
 $_lang['ideas_type_err_save'] = 'Ошибка при сохранении типа.';
+
+
+//Votes
+$_lang['ideas_votes_intro_msg'] = '<strong>Управление Голосованием</strong> <br> Вы можете выделять сразу несколько голосов при помощи Shift или Ctrl.';
+$_lang['ideas_votes'] = 'Голоса';
+$_lang['ideas_vote_post'] = 'Пост';
+$_lang['ideas_vote_user'] = 'Пользователь';
+$_lang['ideas_vote_votetype'] = 'За или против';
+
+$_lang['ideas_vote_remove'] = 'Удалить голос';
+$_lang['ideas_votes_remove'] = 'Удалить голоса';
+$_lang['ideas_vote_remove_confirm'] = 'Вы уверены, что хотите удалить этот голос?';
+$_lang['ideas_votes_remove_confirm'] = 'Вы уверены, что хотите удалить эти голоса?';
+
+$_lang['ideas_vote_err_remove'] = 'Ошибка при удалении голоса.';

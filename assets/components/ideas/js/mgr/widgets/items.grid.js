@@ -314,6 +314,9 @@ userLink = function (value, id, blank) {
     if (!value) {
         return '';
     }
+    if (id === 0) {
+        return '';
+    }
     else if (!id) {
         return value;
     }

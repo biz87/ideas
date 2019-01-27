@@ -49,6 +49,16 @@ ideas.panel.Home = function (config) {
                     xtype: 'ideas-grid-types',
                     cls: 'main-wrapper',
                 }]
+            },{
+                title: _('ideas_votes'),
+                layout: 'anchor',
+                items: [{
+                    html: _('ideas_votes_intro_msg'),
+                    cls: 'panel-desc',
+                }, {
+                    xtype: 'ideas-grid-votes',
+                    cls: 'main-wrapper',
+                }]
             }]
         }]
     });
