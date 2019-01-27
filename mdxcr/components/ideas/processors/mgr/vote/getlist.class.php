@@ -83,7 +83,6 @@ class ideasVoteGetListProcessor extends modObjectGetListProcessor
 
         //Get post
         if(!empty($array['post_id']) && $array['post_id'] > 0){
-            //$post = $object->getOne('Ideas');
             $post = $this->modx->getObject('ideasPost', array('id' => $array['post_id']));
             if($post){
                 $array['post'] = $post->name;

@@ -86,7 +86,7 @@
         <aggregate alias="User" class="modUser" local="user_id" foreign="id" cardinality="one" owner="foreign"/>
         <aggregate alias="UserProfile" class="modUserProfile" local="user_id" foreign="internalKey" owner="foreign"
                    cardinality="one"/>
-        <aggregate alias="Post" class="ideasPost" local="post_id" foreign="id" cardinality="one" owner="local"/>
+            <aggregate alias="Post" class="ideasPost" local="post_id" foreign="id" cardinality="one" owner="local"/>
     </object>
 
 </model>
